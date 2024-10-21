@@ -1,0 +1,16 @@
+analyzer:
+  errors:
+    avoid_positional_boolean_parameters: ignore
+    constant_identifier_names: ignore
+    directives_ordering: ignore
+    lines_longer_than_80_chars: ignore
+    one_member_abstracts: ignore
+    public_member_api_docs: ignore
+    sort_constructors_first: ignore
+    unnecessary_lambdas: ignore
+
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    sort_pub_dependencies: false
