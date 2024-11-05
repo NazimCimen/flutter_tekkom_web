@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tekkom_web/product/constants/string_constants.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 
 @immutable
 final class FeatureItems {
@@ -11,11 +11,11 @@ final class FeatureItems {
     ),
     FeatureItem(
       icon: Icons.star_outline,
-      text: StringConstants.texttile,
+      text: StringConstants.our_services,
     ),
     FeatureItem(
       icon: Icons.sentiment_satisfied_outlined,
-      text: StringConstants.mining,
+      text: StringConstants.about_us,
     ),
     FeatureItem(
       icon: Icons.app_shortcut_outlined,

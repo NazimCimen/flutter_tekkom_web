@@ -8,14 +8,14 @@ abstract class ApplicationTheme {
 }
 
 /// Custom Dark theme for project design
-final class CustomDarkTheme implements ApplicationTheme {
+final class CustomLightTheme implements ApplicationTheme {
   @override
-  ColorScheme get colorScheme => CustomColorScheme.darkScheme;
+  ColorScheme get colorScheme => CustomColorScheme.lightScheme;
   @override
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
-        colorScheme: CustomColorScheme.darkScheme,
-        fontFamily: GoogleFonts.poppins().fontFamily,
-        scaffoldBackgroundColor: Colors.black,
+        colorScheme: CustomColorScheme.lightScheme,
+        fontFamily: GoogleFonts.montserrat().fontFamily,
+        scaffoldBackgroundColor: Color(0xfff5f5f5),
       );
 }

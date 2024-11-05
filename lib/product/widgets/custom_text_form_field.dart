@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/product/decorations/input_decorations/custom_input_decoration.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  final String hintText;
+  final String labelText;
   final int? maxLines;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   const CustomTextFormField({
     required this.controller,
-    required this.hintText,
+    required this.labelText,
     required this.maxLines,
     required this.validator,
     super.key,
@@ -22,7 +22,7 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       decoration: CustomInputDecoration.inputDecoration(
         context: context,
-        hintText: hintText,
+        labelText: labelText,
       ),
     );
   }

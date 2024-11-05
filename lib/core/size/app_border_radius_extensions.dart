@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/dynamic_size.dart';
+
+extension ConstantBorderRadiusExtension on BuildContext {
+  BorderRadius get cBorderRadiusAllLow => BorderRadius.circular(cLowValue);
+  BorderRadius get cBorderRadiusAllMedium =>
+      BorderRadius.circular(cMediumValue);
+  BorderRadius get cBorderRadiusAllLarge => BorderRadius.circular(cLargeValue);
+  BorderRadius get cBorderRadiusAllXLarge =>
+      BorderRadius.circular(cXLargeValue);
+  BorderRadius get cBorderRadiusAllXXLarge =>
+      BorderRadius.circular(cXxLargeValue);
+}
 
 extension DynamicBorderRadiusExtension on BuildContext {
   BorderRadius get borderRadiusAllXLow => BorderRadius.circular(dXLowValue);

@@ -9,6 +9,7 @@ final class AppRoutes {
   static const String homeView = '/homeView';
 
   static Map<String, WidgetBuilder> get routes => {
-        homeView: (context) => const HomeView(),
+        initialRoute: (context) => const HomeView(),
+        //  homeView: (context) => const HomeView(),
       };
 }

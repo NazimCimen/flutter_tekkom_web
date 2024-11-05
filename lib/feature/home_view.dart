@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/feature/about_us_section/about_us_section.dart';
+import 'package:tekkom_web/feature/about_us_section/about_us_section_desktop.dart';
+import 'package:tekkom_web/feature/contact_us_section/contact_us_section.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/header/header_drawer.dart';
 import 'package:tekkom_web/feature/header/header_mobile.dart';
+import 'package:tekkom_web/feature/home_section/home_section.dart';
 import 'package:tekkom_web/feature/home_view_mixin.dart';
+import 'package:tekkom_web/feature/our_services_section/our_services_view.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
 class HomeView extends StatefulWidget {
@@ -30,17 +35,12 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
                 scrollToSection(3);
               },
             ),
-            if (!isMobile)
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                child: HeaderDesktop(
-                  sectionNavButton: scrollToSection,
-                  isHeaderTransparent: isHeaderTransparent,
-                ),
+            if (Responsive.isDesktop(context))
+              HeaderDesktop(
+                sectionNavButton: scrollToSection,
+                isHeaderTransparent: isHeaderTransparent,
               ),
-            if (isMobile)
+            if (!Responsive.isDesktop(context))
               HeaderMobile(
                 sectionNavButton: scrollToSection,
                 scaffoldKey: scaffoldKey,
@@ -77,23 +77,19 @@ class _BodyContent extends StatelessWidget {
               SizedBox(
                 key: sectionKeys.first,
               ),
-              /*  HomeSection(
+              HomeSection(
                 isMobile: isMobile,
                 homeSectionButton: homeSectionButton,
               ),
+              OurServicesSection(key: sectionKeys[1]),
               Responsive(
-                mobile: TexttileSection(key: sectionKeys[1]),
-                tablet: TexttileSection(key: sectionKeys[1]),
-                desktop: TexttileSectionDesktop(key: sectionKeys[1]),
+                mobile: AboutUsSection(key: sectionKeys[2]),
+                tablet: AboutUsSection(key: sectionKeys[2]),
+                desktop: AboutUsSectionDesktop(key: sectionKeys[2]),
               ),
-              Responsive(
-                mobile: MiningSection(key: sectionKeys[2]),
-                tablet: MiningSection(key: sectionKeys[2]),
-                desktop: MiningSectionDesktop(key: sectionKeys[2]),
-              ),
-              FooterSection(
+              ContactUsSection(
                 key: sectionKeys[3],
-              ),*/
+              ),
             ],
           ),
         ],

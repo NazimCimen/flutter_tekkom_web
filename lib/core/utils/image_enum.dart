@@ -2,22 +2,12 @@ enum ImageEnumsPng {
   logo,
   logo_border,
   bg_home,
-  bg_texttile,
-  bg_mining,
-  bg_form,
-  bg_catalog,
-  product1,
-  product2,
-  product3,
-  product4,
-  product5,
-  product6,
-  product7,
-  product8,
-  product9,
-  product10,
-  product11,
-  product12,
+  img_services1,
+  img_services2,
+  img_services3,
+  img_about_us,
+  ic_flag_tr,
+  ic_flag_en,
 }
 
 extension PngExtension on ImageEnumsPng {
@@ -29,6 +19,9 @@ enum ImageEnumsSvg {
   ic_texttile,
   ic_mining,
   ic_contact_us,
+  ic_location,
+  ic_phone,
+  ic_mail,
 }
 
 extension SvgExtension on ImageEnumsSvg {

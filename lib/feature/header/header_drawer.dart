@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
-import 'package:tekkom_web/product/constants/string_constants.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 
 class HeaderDrawer extends StatelessWidget {
   final void Function(int) sectionNavButton;
@@ -12,7 +12,6 @@ class HeaderDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
         children: <Widget>[
           _DrawerListTile(
@@ -24,14 +23,14 @@ class HeaderDrawer extends StatelessWidget {
           ),
           _DrawerListTile(
             assetPath: ImageEnumsSvg.ic_texttile.toPathSvg,
-            text: StringConstants.texttile,
+            text: StringConstants.our_services,
             onTapSection: () {
               sectionNavButton(1);
             },
           ),
           _DrawerListTile(
             assetPath: ImageEnumsSvg.ic_mining.toPathSvg,
-            text: StringConstants.mining,
+            text: StringConstants.about_us,
             onTapSection: () {
               sectionNavButton(2);
             },

@@ -10,13 +10,15 @@ final class CustomBoxDecoration {
   ) {
     return BoxDecoration(
       border: Border(
-        bottom: BorderSide(
-          color: Theme.of(context).colorScheme.tertiary.withOpacity(0.4),
-        ),
+        bottom: isTransparent
+            ? BorderSide.none
+            : BorderSide(
+                color: Theme.of(context).colorScheme.outline.withOpacity(0.4),
+              ),
       ),
       color: isTransparent
           ? Colors.transparent
-          : Theme.of(context).scaffoldBackgroundColor,
+          : Theme.of(context).colorScheme.surface,
     );
   }
 }
