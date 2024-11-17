@@ -149,12 +149,6 @@ class _HomeInfoWidget extends StatelessWidget {
             ),
           ),
         SizedBox(height: ConstantSizes.xLarge.value),
-        FadeInUp(
-          child: CustomElevatedButtonWidget(
-            text: StringConstants.contact_us.tr(),
-            onPress: homeSectionButton,
-          ),
-        ),
       ],
     );
   }
