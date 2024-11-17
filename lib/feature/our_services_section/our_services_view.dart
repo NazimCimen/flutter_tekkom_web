@@ -98,6 +98,11 @@ class OurServicesSection extends StatelessWidget {
                 ),
               ),
             SizedBox(height: context.cXxLargeValue),
+            Image.asset(
+              'assets/images/bg_test.png',
+              width: Responsive.getWidth(context),
+              fit: BoxFit.cover,
+            ),
           ],
         ),
       ),

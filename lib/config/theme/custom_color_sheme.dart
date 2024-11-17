@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// Project custom colors
+@immutable
 final class CustomColorScheme {
-  CustomColorScheme._();
+  const CustomColorScheme._();
 
   static const lightScheme = ColorScheme(
     brightness: Brightness.light,
