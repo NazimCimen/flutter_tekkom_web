@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/routes/navigator_service.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/feature/language_selector/presentation/language_selector_widget.dart';
 import 'package:tekkom_web/product/constants/feature_items.dart';
@@ -9,10 +10,8 @@ import 'package:tekkom_web/product/services/url_service.dart';
 import 'package:tekkom_web/product/widgets/custom_text_button.dart';
 
 class HeaderDesktop extends StatelessWidget {
-  final void Function(int) sectionNavButton;
   final bool isHeaderTransparent;
   const HeaderDesktop({
-    required this.sectionNavButton,
     required this.isHeaderTransparent,
     super.key,
   });
@@ -52,6 +51,14 @@ class HeaderDesktop extends StatelessWidget {
                       icon: Icons.mail_outline,
                       launchUrl: UrlService.launchWhatsap,
                       text: StringConstants.contact_info_mail,
+                    ),
+                    SizedBox(
+                      width: context.cMediumValue,
+                    ),
+                    _ContactHeaderInfo(
+                      icon: Icons.location_on_outlined,
+                      launchUrl: UrlService.launchWhatsap,
+                      text: StringConstants.contact_info_adress,
                     ),
                     const Spacer(),
                     Padding(
@@ -95,7 +102,9 @@ class HeaderDesktop extends StatelessWidget {
                     isHeaderTransparent: isHeaderTransparent,
                     text: FeatureItems.drawerItems[i].text,
                     onPressed: () {
-                      sectionNavButton(i);
+                      NavigatorService.pushNamed(
+                        FeatureItems.drawerItems[i].route,
+                      );
                     },
                   ),
               ],

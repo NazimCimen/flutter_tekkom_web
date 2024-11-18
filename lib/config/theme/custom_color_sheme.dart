@@ -15,13 +15,14 @@ final class CustomColorScheme {
     onError: Color(0xFFFFFFFF),
     surface: Color(0xFFFFFFFF),
     scrim: Colors.black,
-    secondaryContainer: Colors.orangeAccent,
+    secondaryContainer: Colors.blueGrey,
     tertiaryContainer: Colors.green,
     tertiaryFixed: Color(0xffe42424),
     onSurface: Color(0xFF000000),
     onPrimaryContainer: Color(0xFFE0E0E0),
     tertiary: Color(0xffEEEEEE),
     onTertiary: Color.fromARGB(255, 32, 32, 32),
-    outline: Color(0xFFBDBDBD),
+    outline: Colors.white38,
+    outlineVariant: Colors.white70,
   );
 }

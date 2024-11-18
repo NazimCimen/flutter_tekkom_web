@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:tekkom_web/feature/about_us_section/about_us_section.dart';
-import 'package:tekkom_web/feature/about_us_section/about_us_section_desktop.dart';
-import 'package:tekkom_web/feature/contact_us_section/contact_us_section.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/header/header_drawer.dart';
 import 'package:tekkom_web/feature/header/header_mobile.dart';
-import 'package:tekkom_web/feature/home_section/home_section.dart';
-import 'package:tekkom_web/feature/home_view_mixin.dart';
-import 'package:tekkom_web/feature/our_services_section/our_services_view.dart';
+import 'package:tekkom_web/feature/footer/footer_widget_desktop.dart';
+import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
+import 'package:tekkom_web/feature/footer/footer_widget_mobile.dart';
+import 'package:tekkom_web/feature/home/widgets/main_page.dart';
+import 'package:tekkom_web/feature/home/mixin/home_view_mixin.dart';
+import 'package:tekkom_web/feature/our_services/widgets/our_services_widget.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
+part 'home_sub_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -24,25 +27,26 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
     return Scaffold(
       key: scaffoldKey,
       drawer: isMobile ? HeaderDrawer(sectionNavButton: scrollToSection) : null,
+      floatingActionButton: !isHeaderTransparent
+          ? _FloatActionButton(
+              floatButtonPressed: () {
+                scrollToSection(0);
+              },
+            )
+          : null,
       body: SafeArea(
         child: Stack(
           children: [
             _BodyContent(
               scrollController: scrollController,
               sectionKeys: sectionKeys,
-              isMobile: isMobile,
-              homeSectionButton: () {
-                scrollToSection(3);
-              },
             ),
             if (Responsive.isDesktop(context))
               HeaderDesktop(
-                sectionNavButton: scrollToSection,
                 isHeaderTransparent: isHeaderTransparent,
               ),
             if (!Responsive.isDesktop(context))
               HeaderMobile(
-                sectionNavButton: scrollToSection,
                 scaffoldKey: scaffoldKey,
                 isHeaderTransparent: isHeaderTransparent,
               ),
@@ -57,14 +61,10 @@ class _BodyContent extends StatelessWidget {
   const _BodyContent({
     required this.scrollController,
     required this.sectionKeys,
-    required this.isMobile,
-    required this.homeSectionButton,
   });
 
   final ScrollController scrollController;
   final List<GlobalKey<State<StatefulWidget>>> sectionKeys;
-  final bool isMobile;
-  final VoidCallback homeSectionButton;
 
   @override
   Widget build(BuildContext context) {
@@ -77,18 +77,15 @@ class _BodyContent extends StatelessWidget {
               SizedBox(
                 key: sectionKeys.first,
               ),
-              HomeSection(
-                isMobile: isMobile,
-                homeSectionButton: homeSectionButton,
-              ),
-              OurServicesSection(key: sectionKeys[1]),
-              Responsive(
-                mobile: AboutUsSection(key: sectionKeys[2]),
-                tablet: AboutUsSection(key: sectionKeys[2]),
-                desktop: AboutUsSectionDesktop(key: sectionKeys[2]),
-              ),
-              ContactUsSection(
-                key: sectionKeys[3],
+              const MainPage(),
+              const OurServicesSection(),
+              SizedBox(height: context.cXxLargeValue),
+              BrandCarousel(),
+              SizedBox(height: context.cXxLargeValue),
+              const Responsive(
+                desktop: FooterWidgetDesktop(),
+                mobile: FooterWidgetMobile(),
+                tablet: FooterWidgetMobile(),
               ),
             ],
           ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tekkom_web/feature/home_view.dart';
+import 'package:tekkom_web/feature/home/view/home_view.dart';
+import 'package:tekkom_web/feature/our_services/view/our_services_view.dart';
 
-mixin HomeViewMixin on State<HomeView> {
+mixin OurServicesMixin on State<OurServicesView> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final scrollController = ScrollController();
   final List<GlobalKey> sectionKeys = List.generate(4, (index) => GlobalKey());

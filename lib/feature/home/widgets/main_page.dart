@@ -8,15 +8,10 @@ import 'package:tekkom_web/product/constants/some_constants.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
-class HomeSection extends StatelessWidget {
-  final VoidCallback homeSectionButton;
-  const HomeSection({
-    required this.isMobile,
-    required this.homeSectionButton,
+class MainPage extends StatelessWidget {
+  const MainPage({
     super.key,
   });
-
-  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +44,6 @@ class HomeSection extends StatelessWidget {
                           child: _HomeInfoWidget(
                             isMobile: isMobile,
                             isDesktop: isDesktop,
-                            homeSectionButton: homeSectionButton,
                           ),
                         ),
                       ),
@@ -66,7 +60,6 @@ class HomeSection extends StatelessWidget {
                           child: _HomeInfoWidget(
                             isMobile: isMobile,
                             isDesktop: isDesktop,
-                            homeSectionButton: homeSectionButton,
                           ),
                         ),
                       ),
@@ -87,12 +80,10 @@ class _HomeInfoWidget extends StatelessWidget {
   const _HomeInfoWidget({
     required this.isMobile,
     required this.isDesktop,
-    required this.homeSectionButton,
   });
 
   final bool isMobile;
   final bool isDesktop;
-  final VoidCallback homeSectionButton;
 
   @override
   Widget build(BuildContext context) {

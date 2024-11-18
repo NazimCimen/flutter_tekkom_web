@@ -40,7 +40,7 @@ class AboutUsSectionDesktop extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SectionTitleTextWidget(
+                        CustomTitleTextLargeWidget(
                           text: StringConstants.about_us,
                         ),
                         SizedBox(height: context.cLargeValue),

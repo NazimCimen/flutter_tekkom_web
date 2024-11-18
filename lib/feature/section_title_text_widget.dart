@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SectionTitleTextWidget extends StatelessWidget {
+class CustomTitleTextLargeWidget extends StatelessWidget {
   final String text;
-  const SectionTitleTextWidget({
+  const CustomTitleTextLargeWidget({
     required this.text,
     super.key,
   });
@@ -12,8 +12,28 @@ class SectionTitleTextWidget extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.displayMedium?.copyWith(
-          color: Theme.of(context).colorScheme.onSurface,
-          fontWeight: FontWeight.bold),
+            color: Theme.of(context).colorScheme.onSurface,
+            fontWeight: FontWeight.bold,
+          ),
+    );
+  }
+}
+
+class CustomTitleTextMediumWidget extends StatelessWidget {
+  final String text;
+  const CustomTitleTextMediumWidget({
+    required this.text,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }

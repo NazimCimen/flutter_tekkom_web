@@ -7,12 +7,10 @@ import 'package:tekkom_web/product/decorations/box_decorations/custom_box_decora
 import 'package:tekkom_web/product/services/url_service.dart';
 
 class HeaderMobile extends StatelessWidget {
-  final void Function(int) sectionNavButton;
   final GlobalKey<ScaffoldState> scaffoldKey;
   final bool isHeaderTransparent;
 
   const HeaderMobile({
-    required this.sectionNavButton,
     required this.scaffoldKey,
     required this.isHeaderTransparent,
     super.key,
@@ -53,12 +51,15 @@ class HeaderMobile extends StatelessWidget {
                       launchUrl: UrlService.launchWhatsap,
                       text: StringConstants.contact_info_mail,
                     ),
-                    const Spacer(),
-                    Icon(
-                      Icons.wb_sunny_outlined,
-                      color: Theme.of(context).colorScheme.surface,
+                    SizedBox(
+                      width: context.cMediumValue,
                     ),
-                    SizedBox(width: context.cMediumValue),
+                    _ContactHeaderInfo(
+                      icon: Icons.location_on_outlined,
+                      launchUrl: UrlService.launchWhatsap,
+                      text: StringConstants.contact_info_mail,
+                    ),
+                    const Spacer(),
                     Padding(
                       padding: EdgeInsets.only(
                         top: context.cLowValue / 2,
