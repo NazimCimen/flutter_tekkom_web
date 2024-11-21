@@ -58,7 +58,9 @@ class _BodyContent extends StatelessWidget {
                 key: sectionKeys.first,
               ),
               const MainPage(),
-              const OurServicesSection(),
+              OurServicesSection(
+                scrollController: scrollController,
+              ),
               const DescriptionWithImageWidget(),
               BrandCarousel(),
               const Responsive(

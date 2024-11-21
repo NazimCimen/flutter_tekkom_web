@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/routes/app_routes.dart';
+import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/feature/base_ui/base_layout.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
@@ -7,18 +8,19 @@ import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/feature/footer/footer_widget_desktop.dart';
 import 'package:tekkom_web/feature/footer/footer_widget_mobile.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
+import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
 import 'package:tekkom_web/feature/our_services/widgets/our_services_widget.dart';
 import 'package:tekkom_web/product/constants/custom_shadows.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
-class OurServicesView extends StatefulWidget {
-  const OurServicesView({super.key});
+class AboutUsView extends StatefulWidget {
+  const AboutUsView({super.key});
 
   @override
-  State<OurServicesView> createState() => _OurServicesViewState();
+  State<AboutUsView> createState() => _OurServicesViewState();
 }
 
-class _OurServicesViewState extends BaseLayout<OurServicesView> {
+class _OurServicesViewState extends BaseLayout<AboutUsView> {
   @override
   Widget buildBody() {
     return _BodyContent(
@@ -30,13 +32,13 @@ class _OurServicesViewState extends BaseLayout<OurServicesView> {
   @override
   Widget buildHeaderDesktop() {
     return HeaderDesktop(
-      currentPage: AppRoutes.ourServicesView,
+      currentPage: AppRoutes.aboutUsView,
       scrollController: scrollCont,
     );
   }
 }
 
-class _BodyContent extends StatelessWidget {
+class _BodyContent extends BaseStateless<void> {
   const _BodyContent({
     required this.scrollController,
     required this.sectionKeys,
@@ -63,7 +65,7 @@ class _BodyContent extends StatelessWidget {
                   children: [
                     Positioned.fill(
                       child: Image.asset(
-                        ImageEnumsPng.bg_services.toPathPng,
+                        ImageEnumsPng.bg_about.toPathPng,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -82,7 +84,7 @@ class _BodyContent extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'HİZMETLERİMİZ',
+                              'HAKKIMIZDA',
                               style: Theme.of(context)
                                   .textTheme
                                   .displayLarge
@@ -96,7 +98,7 @@ class _BodyContent extends StatelessWidget {
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              'Araç ve iş makineleri tamirinde uzman ekibimizle güvenilir hizmet sunarken, \nyakıt tasarruf cihazlarımızla da verimliliğinizi artırıyoruz.',
+                              'Kaliteli hizmet anlayışıyla araç ve iş makinelerinize değer katıyor, her türlü bakım ve tamir işlemini titizlikle gerçekleştiriyoruz.',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -115,10 +117,25 @@ class _BodyContent extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: context.cXxLargeValue),
+              Padding(
+                padding: context.pageHorizontolPadding(context),
+                child: Column(
+                  children: [
+                    _title(context, 'HAKKIMIZDA/BİZ KİMİZ?'),
+                    SizedBox(height: context.cMediumValue),
+                    _description(context,
+                        'Firmamız, oto tamir ve bakım hizmetlerinde güçlü bir deneyime sahip, her tür aracın bakımını ve onarımını gerçekleştirebilen bir işletmedir. Araçlarınızın uzun ömürlü olabilmesi, güvenli ve verimli bir şekilde çalışabilmesi için en iyi bakım çözümlerini sunuyoruz.Sizlere araç bakımında sadece rutin servis hizmeti değil, aynı zamanda motor verimliliğini artırmaya yönelik yakıt tasarruf cihazları da sunuyoruz. Bu cihazlar, aracınızın yakıt tüketimini optimize ederek, hem çevre dostu bir sürüş sağlar hem de uzun vadede ekonomik faydalar sunar.Sürekli gelişmeye ve yenilikçi çözümler üretmeye odaklanarak, her zaman müşteri memnuniyetini ön planda tutuyoruz. Yola güvenle çıkabilmeniz için aracınızın bakımını doğru bir şekilde yaparak, performansını en üst seviyeye çıkarıyoruz.Araç bakımınızı yüksek kaliteli malzemelerle gerçekleştiriyor, herhangi bir arıza durumunda hızlı ve etkili çözümler sunuyoruz. Aracınızın tüm ihtiyaçlarına tek noktadan, güvenilir bir şekilde cevap veriyoruz.Her zaman güvenli ve konforlu bir sürüş deneyimi için, bakım ve onarım ihtiyaçlarınızı bize emanet edebilirsiniz.'),
+                  ],
+                ),
+              ),
+              SizedBox(height: context.cXLargeValue),
               OurServicesSection(
                 scrollController: scrollController,
               ),
-              SizedBox(height: context.cXxLargeValue),
+              SizedBox(height: context.cLargeValue),
+              BrandCarousel(),
+              SizedBox(height: context.cXLargeValue),
               const Responsive(
                 desktop: FooterWidgetDesktop(),
                 mobile: FooterWidgetMobile(),
@@ -128,6 +145,25 @@ class _BodyContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  SelectableText _description(BuildContext context, String text) {
+    return SelectableText(
+      text,
+      style: textTheme(context)
+          .bodyLarge
+          ?.copyWith(fontStyle: FontStyle.normal, height: 2),
+    );
+  }
+
+  SelectableText _title(BuildContext context, String text) {
+    return SelectableText(
+      text,
+      style: textTheme(context).headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            height: 2,
+          ),
     );
   }
 }

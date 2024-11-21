@@ -23,7 +23,7 @@ class UrlServiceImpl extends UrlService {
   @override
   Future<void> launchMap() async {
     const googleMapsUrl =
-        'https://www.google.com/maps/search/?api=1&query=39.92077,32.85411';
+        'https://www.google.com/maps/search/?api=1&query=38.031198,32.602152';
     final mapUri = Uri.parse(googleMapsUrl);
     if (await canLaunchUrl(mapUri)) {
       await launchUrl(mapUri, mode: LaunchMode.externalApplication);

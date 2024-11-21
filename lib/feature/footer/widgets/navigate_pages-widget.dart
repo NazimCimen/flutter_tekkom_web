@@ -29,7 +29,7 @@ class NavigatePagesWidget extends StatelessWidget {
         FooterLink(
           title: 'Kurumsal',
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.corporateView);
+            NavigatorService.pushNamed(AppRoutes.aboutUsView);
           },
         ),
         FooterLink(

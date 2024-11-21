@@ -7,13 +7,13 @@ class CustomIconButton extends BaseStateless<void> {
   final IconData icon;
   final String text;
   final VoidCallback launchUrl;
-  final bool isDark;
+  final bool isOnHeader;
   final bool isHover;
   const CustomIconButton({
     required this.icon,
     required this.launchUrl,
     required this.text,
-    required this.isDark,
+    required this.isOnHeader,
     required this.isHover,
     super.key,
   });
@@ -29,22 +29,26 @@ class CustomIconButton extends BaseStateless<void> {
               !isHover ? colorScheme(context).primary.withOpacity(0.5) : null,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment:
+              !isOnHeader ? MainAxisAlignment.start : MainAxisAlignment.center,
           children: [
             Icon(
               icon,
-              color: isDark
+              color: isOnHeader
                   ? colorScheme(context).scrim
                   : colorScheme(context).surface,
             ),
             SizedBox(width: context.cLowValue),
-            Text(
-              text,
-              style: textTheme(context).bodyMedium?.copyWith(
-                    color: isDark
-                        ? colorScheme(context).scrim
-                        : colorScheme(context).surface,
-                  ),
+            Flexible(
+              child: Text(
+                text,
+                style: textTheme(context).bodyMedium?.copyWith(
+                      color: isOnHeader
+                          ? colorScheme(context).scrim
+                          : colorScheme(context).surface,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+              ),
             ),
           ],
         ),

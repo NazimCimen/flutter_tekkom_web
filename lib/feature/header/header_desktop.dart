@@ -27,13 +27,12 @@ class HeaderDesktop extends BaseStateless<void> {
   @override
   Widget build(BuildContext context) {
     return Consumer<HeaderProvider>(
-      builder:
-          (BuildContext context, HeaderProvider controller, Widget? child) {
-        if (controller.errorMsg != null) {
+      builder: (BuildContext context, HeaderProvider provider, Widget? child) {
+        if (provider.errorMsg != null) {
           SchedulerBinding.instance.addPostFrameCallback(
             (_) {
-              CustomSnackBars.showErrorSnackbar(context, controller.errorMsg!);
-              controller.snackBarDuration();
+              CustomSnackBars.showErrorSnackbar(context, provider.errorMsg!);
+              provider.snackBarDuration();
             },
           );
         }
@@ -65,7 +64,7 @@ class _BodyState extends BaseStateful<_Body, HeaderProvider> {
       child: Column(
         children: [
           Visibility(
-            visible: watchViewModel().isHeaderTransparent,
+            visible: readViewModel().isHeaderTransparent,
             child: SizedBox(
               height: context.cXLargeValue,
               child: Container(
@@ -79,44 +78,50 @@ class _BodyState extends BaseStateful<_Body, HeaderProvider> {
                 ),
                 child: Row(
                   children: [
-                    MouseRegion(
-                      onEnter: (_) => onEnter(0),
-                      onExit: (_) => onExit(0),
-                      child: CustomIconButton(
-                        icon: Icons.phone,
-                        launchUrl:
-                            context.read<HeaderProvider>().handleWhatsApp,
-                        text: StringConstants.contact_info_phone,
-                        isDark: false,
-                        isHover: !hoverStates[0]!,
+                    SizedBox(
+                      width: context.cXxLargeValue * 3,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: MouseRegion(
+                          onEnter: (_) => onEnter(0),
+                          onExit: (_) => onExit(0),
+                          child: CustomIconButton(
+                            icon: Icons.phone,
+                            launchUrl:
+                                context.read<HeaderProvider>().handleWhatsApp,
+                            text: StringConstants.contact_info_phone,
+                            isOnHeader: false,
+                            isHover: !hoverStates[0]!,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: context.cMediumValue,
-                    ),
-                    MouseRegion(
-                      onEnter: (_) => onEnter(1),
-                      onExit: (_) => onExit(1),
-                      child: CustomIconButton(
-                        icon: Icons.mail_outline,
-                        launchUrl: context.read<HeaderProvider>().handleEmail,
-                        text: StringConstants.contact_info_mail,
-                        isDark: false,
-                        isHover: !hoverStates[1]!,
+                      width: context.cXxLargeValue * 3.5,
+                      child: MouseRegion(
+                        onEnter: (_) => onEnter(1),
+                        onExit: (_) => onExit(1),
+                        child: CustomIconButton(
+                          icon: Icons.mail_outline,
+                          launchUrl: context.read<HeaderProvider>().handleEmail,
+                          text: StringConstants.contact_info_mail,
+                          isOnHeader: false,
+                          isHover: !hoverStates[1]!,
+                        ),
                       ),
                     ),
                     SizedBox(
-                      width: context.cMediumValue,
-                    ),
-                    MouseRegion(
-                      onEnter: (_) => onEnter(2),
-                      onExit: (_) => onExit(2),
-                      child: CustomIconButton(
-                        icon: Icons.location_on_outlined,
-                        launchUrl: context.read<HeaderProvider>().handleMap,
-                        text: StringConstants.contact_info_adress,
-                        isDark: false,
-                        isHover: !hoverStates[2]!,
+                      width: context.cXxLargeValue * 6,
+                      child: MouseRegion(
+                        onEnter: (_) => onEnter(2),
+                        onExit: (_) => onExit(2),
+                        child: CustomIconButton(
+                          icon: Icons.location_on_outlined,
+                          launchUrl: context.read<HeaderProvider>().handleMap,
+                          text: StringConstants.contact_info_adress,
+                          isOnHeader: false,
+                          isHover: !hoverStates[2]!,
+                        ),
                       ),
                     ),
                     const Spacer(),
@@ -142,11 +147,10 @@ class _BodyState extends BaseStateful<_Body, HeaderProvider> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                SelectableText(
                   textAlign: TextAlign.right,
                   StringConstants.appName,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: textTheme.bodyMedium?.copyWith(
                     overflow: TextOverflow.ellipsis,
                     color: watchViewModel().isHeaderTransparent

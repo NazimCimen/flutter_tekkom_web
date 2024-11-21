@@ -19,7 +19,7 @@ final class FeatureItems {
     FeatureItem(
       icon: Icons.sentiment_satisfied_outlined,
       text: StringConstants.about_us,
-      route: AppRoutes.corporateView,
+      route: AppRoutes.aboutUsView,
     ),
     FeatureItem(
       icon: Icons.app_shortcut_outlined,

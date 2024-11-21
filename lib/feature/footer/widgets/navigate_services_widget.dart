@@ -23,19 +23,19 @@ class NavigateServicesWidget extends StatelessWidget {
         FooterLink(
           title: 'Araç Tamir Ve Bakımı',
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
+            NavigatorService.pushNamed(AppRoutes.carReapierView);
           },
         ),
         FooterLink(
           title: 'Yakıt Tasarruf Cihazı',
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
+            NavigatorService.pushNamed(AppRoutes.fuelSavingView);
           },
         ),
         FooterLink(
           title: 'İş Makineleri Tamir Ve Bakımı',
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
+            NavigatorService.pushNamed(AppRoutes.repairMachineryView);
           },
         ),
         SizedBox(height: context.cMediumValue),

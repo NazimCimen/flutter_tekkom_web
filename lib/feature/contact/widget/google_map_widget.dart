@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tekkom_web/core/base/base_stateful.dart';
+import 'package:tekkom_web/core/size/padding_extension.dart';
 
 class GoogleMapWidget extends StatefulWidget {
   const GoogleMapWidget({super.key});
@@ -9,8 +9,7 @@ class GoogleMapWidget extends StatefulWidget {
   State<GoogleMapWidget> createState() => _GoogleMapWidgetState();
 }
 
-class _GoogleMapWidgetState
-    extends BaseStateful<GoogleMapWidget, ChangeNotifier> {
+class _GoogleMapWidgetState extends State<GoogleMapWidget> {
   late GoogleMapController mapController;
   static const LatLng _businessLocation = LatLng(38.031198, 32.602152);
   void _onMapCreated(GoogleMapController controller) {
@@ -23,9 +22,10 @@ class _GoogleMapWidgetState
       onVerticalDragUpdate: (_) {},
       child: AbsorbPointer(
         absorbing: false,
-        child: Column(
-          children: [
-            GoogleMap(
+        child: Expanded(
+          child: Padding(
+            padding: context.cPaddingxLarge,
+            child: GoogleMap(
               onMapCreated: _onMapCreated,
               initialCameraPosition: const CameraPosition(
                 target: _businessLocation,
@@ -42,7 +42,7 @@ class _GoogleMapWidgetState
                 ),
               },
             ),
-          ],
+          ),
         ),
       ),
     );

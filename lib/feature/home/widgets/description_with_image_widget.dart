@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
+import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/product/constants/custom_shadows.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
@@ -113,10 +114,10 @@ class _BackgroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-            'assets/images/bg_test7.png',
+            ImageEnumsPng.bg_section.toPathPng,
           ),
           fit: BoxFit.cover,
         ),

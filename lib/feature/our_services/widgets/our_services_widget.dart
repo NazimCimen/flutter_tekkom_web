@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/routes/app_routes.dart';
 import 'package:tekkom_web/config/routes/navigator_service.dart';
 import 'package:tekkom_web/core/base/base_stateful.dart';
+import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
@@ -11,8 +12,13 @@ import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/product/widgets/custom_elevated_button.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
-class OurServicesSection extends StatelessWidget {
-  const OurServicesSection({super.key});
+class OurServicesSection extends BaseStateless<void> {
+  final ScrollController scrollController;
+
+  const OurServicesSection({
+    required this.scrollController,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +52,24 @@ class OurServicesSection extends StatelessWidget {
                     child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services1.toPathPng,
                       title: 'Araç Tamir Ve Bakımı',
+                      scrollController: scrollController,
+                      route: AppRoutes.carReapierView,
                     ),
                   ),
                   Flexible(
                     child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services2.toPathPng,
                       title: 'İş Makineleri Tamir Ve Bakımı',
+                      scrollController: scrollController,
+                      route: AppRoutes.repairMachineryView,
                     ),
                   ),
                   Flexible(
                     child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services3.toPathPng,
+                      scrollController: scrollController,
                       title: 'Yakıt Tasarruf Cihazı',
+                      route: AppRoutes.fuelSavingView,
                     ),
                   ),
                 ],
@@ -72,16 +84,22 @@ class OurServicesSection extends StatelessWidget {
                   _HoverContainer(
                     imagePath: ImageEnumsPng.img_services1.toPathPng,
                     title: 'Araç Tamir Ve Bakımı',
+                    scrollController: scrollController,
+                    route: AppRoutes.carReapierView,
                   ),
                   SizedBox(height: context.cLargeValue),
                   _HoverContainer(
                     imagePath: ImageEnumsPng.img_services2.toPathPng,
                     title: 'İş Makineleri Tamir Ve Bakımı',
+                    scrollController: scrollController,
+                    route: AppRoutes.repairMachineryView,
                   ),
                   SizedBox(height: context.cLargeValue),
                   _HoverContainer(
                     imagePath: ImageEnumsPng.img_services3.toPathPng,
                     title: 'Yakıt Tasarruf Cihazı',
+                    scrollController: scrollController,
+                    route: AppRoutes.fuelSavingView,
                   ),
                 ],
               ),
@@ -101,6 +119,7 @@ class OurServicesSection extends StatelessWidget {
           ),
           SizedBox(height: context.cLowValue),
           CustomElevatedButtonWidget(
+            isLoading: false,
             text: 'BİZE ULAŞIN',
             onPress: () {
               NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
@@ -115,11 +134,15 @@ class OurServicesSection extends StatelessWidget {
 
 class _HoverContainer extends StatefulWidget {
   const _HoverContainer({
+    required this.scrollController,
     required this.imagePath,
     required this.title,
+    required this.route,
   });
   final String imagePath;
   final String title;
+  final ScrollController scrollController;
+  final String route;
 
   @override
   State<_HoverContainer> createState() => _HoverContainerState();
@@ -134,7 +157,7 @@ class _HoverContainerState
         onEnter(0);
       },
       onExit: (event) {
-        onEnter(0);
+        onExit(0);
       },
       child: Stack(
         children: [
@@ -187,15 +210,23 @@ class _HoverContainerState
                 ),
                 child: Center(
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colorScheme.primary,
+                      shape: ContinuousRectangleBorder(
+                        borderRadius: context.cBorderRadiusAllLow,
+                      ),
+                    ),
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content:
-                              Text('İnceleme sayfasına yönlendiriliyor...'),
-                        ),
+                      widget.scrollController.jumpTo(0);
+                      NavigatorService.pushNamed(
+                        widget.route,
                       );
                     },
-                    child: const Text('İncele'),
+                    child: Text(
+                      'İncele',
+                      style: textTheme.bodyMedium
+                          ?.copyWith(color: colorScheme.surface),
+                    ),
                   ),
                 ),
               ),

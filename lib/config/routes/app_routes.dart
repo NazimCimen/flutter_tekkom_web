@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/feature/contact/view/contact_view.dart';
-import 'package:tekkom_web/feature/corporate/view/corporate_view.dart';
+import 'package:tekkom_web/feature/about_us/view/about_us_view.dart';
 import 'package:tekkom_web/feature/home/view/home_view.dart';
+import 'package:tekkom_web/feature/our_services/view/fuel_saving_view.dart';
 import 'package:tekkom_web/feature/our_services/view/our_services_view.dart';
-import 'package:tekkom_web/feature/our_services/view/service_detail_view.dart';
+import 'package:tekkom_web/feature/our_services/view/car_repair_service_view.dart';
+import 'package:tekkom_web/feature/our_services/view/repair_machinery_view.dart';
 
 @immutable
 final class AppRoutes {
@@ -12,26 +14,19 @@ final class AppRoutes {
   static const String initialRoute = '/homeView';
   static const String homeView = '/home';
   static const String ourServicesView = '/services';
-  static const String corporateView = '/corporate';
   static const String contactView = '/contact';
-  static const String serviceDetailView = '/serviceDetail';
+  static const String carReapierView = '/carRepair';
+  static const String repairMachineryView = '/repairMachinery';
+  static const String fuelSavingView = '/fuelSacving';
+  static const String aboutUsView = '/aboutUsView';
 
   static Map<String, WidgetBuilder> get routes => {
         initialRoute: (context) => const HomeView(),
         ourServicesView: (context) => const OurServicesView(),
-        corporateView: (context) => const CorporateView(),
         contactView: (context) => const ContactView(),
-        serviceDetailView: (context) {
-          final bgImgPath =
-              ModalRoute.of(context)!.settings.arguments! as String;
-          final text = ModalRoute.of(context)!.settings.arguments! as String;
-          final description =
-              ModalRoute.of(context)!.settings.arguments! as String;
-          return ServiceDetailView(
-            bgImgPath: bgImgPath,
-            text: text,
-            description: description,
-          );
-        }
+        carReapierView: (context) => const CarRepairServiceView(),
+        repairMachineryView: (context) => const RepairMachineryView(),
+        fuelSavingView: (context) => const FuelSavingView(),
+        aboutUsView: (context) => const AboutUsView(),
       };
 }

@@ -116,10 +116,9 @@ class _Body extends BaseStateless<HeaderProvider> {
                   ),
                 ),
                 const Spacer(),
-                Text(
+                SelectableText(
                   StringConstants.appName,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: watchViewModel(context).isHeaderTransparent
                             ? Theme.of(context).colorScheme.surface

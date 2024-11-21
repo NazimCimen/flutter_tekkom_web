@@ -37,7 +37,7 @@ class HeaderDrawer extends StatelessWidget {
             text: StringConstants.about_us,
             onTapSection: () {
               NavigatorService.goBack();
-              NavigatorService.pushNamed(AppRoutes.corporateView);
+              NavigatorService.pushNamed(AppRoutes.aboutUsView);
             },
           ),
           _DrawerListTile(

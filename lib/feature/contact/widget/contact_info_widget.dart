@@ -23,83 +23,21 @@ class _ContactInfoWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: context.cPaddingxLarge,
+      padding: Responsive.isDesktop(context)
+          ? context.cPaddingxLarge
+          : context.cPaddingSmall,
       decoration: CustomBoxDecoration.customBoxDecoration(context),
       child: Column(
         children: [
           SizedBox(height: context.cLargeValue),
-          Text(
+          SelectableText(
             'Bize Ulaşın',
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(ImageEnumsPng.logo_dark.toPathPng),
-                      SizedBox(
-                        height: context.cLargeValue,
-                      ),
-                      MouseRegion(
-                        onEnter: (_) => onEnter(0),
-                        onExit: (_) => onExit(0),
-                        child: CustomIconButton(
-                          icon: Icons.phone,
-                          launchUrl:
-                              context.read<HeaderProvider>().handleWhatsApp,
-                          text: StringConstants.contact_info_phone,
-                          isDark: true,
-                          isHover: !hoverStates[0]!,
-                        ),
-                      ),
-                      SizedBox(
-                        height: context.cMediumValue,
-                      ),
-                      MouseRegion(
-                        onEnter: (_) => onEnter(1),
-                        onExit: (_) => onExit(1),
-                        child: CustomIconButton(
-                          icon: Icons.mail_outline,
-                          launchUrl: context.read<HeaderProvider>().handleEmail,
-                          text: StringConstants.contact_info_mail,
-                          isDark: true,
-                          isHover: !hoverStates[1]!,
-                        ),
-                      ),
-                      SizedBox(
-                        height: context.cMediumValue,
-                      ),
-                      MouseRegion(
-                        onEnter: (_) => onEnter(2),
-                        onExit: (_) => onExit(2),
-                        child: CustomIconButton(
-                          icon: Icons.location_on_outlined,
-                          launchUrl: context.read<HeaderProvider>().handleMap,
-                          text: StringConstants.contact_info_adress,
-                          isDark: true,
-                          isHover: !hoverStates[2]!,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: context.cPaddingxLarge,
-                    child: const GoogleMapWidget(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          //    if (Responsive.isDesktop(context)) _infosDesktop(context),
-          //   if (!Responsive.isDesktop(context)) _infosTablet(context),
+          if (Responsive.isDesktop(context)) _infosDesktop(context),
+          if (!Responsive.isDesktop(context)) _infosTablet(context),
           SizedBox(height: context.cLargeValue),
         ],
       ),
@@ -125,7 +63,7 @@ class _ContactInfoWidgetState
                     icon: Icons.phone,
                     launchUrl: context.read<HeaderProvider>().handleWhatsApp,
                     text: StringConstants.contact_info_phone,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[0]!,
                   ),
                 ),
@@ -139,7 +77,7 @@ class _ContactInfoWidgetState
                     icon: Icons.mail_outline,
                     launchUrl: context.read<HeaderProvider>().handleEmail,
                     text: StringConstants.contact_info_mail,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[1]!,
                   ),
                 ),
@@ -153,7 +91,7 @@ class _ContactInfoWidgetState
                     icon: Icons.location_on_outlined,
                     launchUrl: context.read<HeaderProvider>().handleMap,
                     text: StringConstants.contact_info_adress,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[2]!,
                   ),
                 ),
@@ -179,10 +117,14 @@ class _ContactInfoWidgetState
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(ImageEnumsPng.logo_dark.toPathPng),
-                SizedBox(
-                  height: context.cLargeValue,
+                Image.asset(
+                  ImageEnumsPng.logo_dark.toPathPng,
+                  height: !Responsive.isMobile(context)
+                      ? context.cXxLargeValue * 2.3
+                      : context.cXxLargeValue * 2,
+                  fit: BoxFit.cover,
                 ),
+                SizedBox(height: context.cLargeValue),
                 MouseRegion(
                   onEnter: (_) => onEnter(0),
                   onExit: (_) => onExit(0),
@@ -190,7 +132,7 @@ class _ContactInfoWidgetState
                     icon: Icons.phone,
                     launchUrl: context.read<HeaderProvider>().handleWhatsApp,
                     text: StringConstants.contact_info_phone,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[0]!,
                   ),
                 ),
@@ -204,7 +146,7 @@ class _ContactInfoWidgetState
                     icon: Icons.mail_outline,
                     launchUrl: context.read<HeaderProvider>().handleEmail,
                     text: StringConstants.contact_info_mail,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[1]!,
                   ),
                 ),
@@ -218,18 +160,15 @@ class _ContactInfoWidgetState
                     icon: Icons.location_on_outlined,
                     launchUrl: context.read<HeaderProvider>().handleMap,
                     text: StringConstants.contact_info_adress,
-                    isDark: true,
+                    isOnHeader: true,
                     isHover: !hoverStates[2]!,
                   ),
                 ),
               ],
             ),
           ),
-          Expanded(
-            child: Padding(
-              padding: context.cPaddingxLarge,
-              child: const GoogleMapWidget(),
-            ),
+          const Expanded(
+            child: GoogleMapWidget(),
           ),
         ],
       ),

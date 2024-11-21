@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
-import 'package:tekkom_web/feature/contact/widget/request_call_back_widget.dart';
+import 'package:tekkom_web/feature/contact/widget/contact_form_widget.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
@@ -20,12 +20,14 @@ class MainPage extends StatelessWidget {
 
     return SizedBox(
       width: Responsive.getWidth(context),
-      height: ConstantSizes.largePageHeight.value,
+      height: !isMobile
+          ? ConstantSizes.largePageHeight.value
+          : ConstantSizes.largePageHeight.value + 100,
       child: Stack(
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg_test9.png',
+              ImageEnumsPng.bg_home.toPathPng,
               fit: BoxFit.cover,
             ),
           ),
@@ -48,7 +50,7 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: FadeInUp(child: const RequestCallbackForm()),
+                        child: FadeInUp(child: const ContactFormWidget()),
                       ),
                     ],
                   )
@@ -65,7 +67,7 @@ class MainPage extends StatelessWidget {
                       ),
                       Expanded(
                         flex: 40,
-                        child: FadeInRight(child: const RequestCallbackForm()),
+                        child: FadeInRight(child: const ContactFormWidget()),
                       ),
                     ],
                   ),
@@ -87,63 +89,50 @@ class _HomeInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: context.cLargeValue * 4),
-        Align(
-          child: Image.asset(
-            ImageEnumsPng.logo.toPathPng,
-            width: isMobile
-                ? context.cXxLargeValue * 5
-                : isDesktop
-                    ? context.cXxLargeValue * 7
-                    : context.cXxLargeValue * 4,
-            fit: BoxFit.cover,
-          ),
-        ),
-        SizedBox(height: ConstantSizes.xLarge.value * 2),
-        Text(
-          textAlign: TextAlign.center,
-          StringConstants.appName,
-          style: isDesktop
-              ? Theme.of(context).textTheme.displayMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.surface,
-                    fontWeight: FontWeight.bold,
-                  )
-              : Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.surface,
-                    fontWeight: FontWeight.bold,
-                  ),
-        ),
-        SizedBox(
-          height: ConstantSizes.large.value,
-        ),
-        if (!isDesktop)
-          Flexible(
-            child: Text(
-              StringConstants.main_screen_description.tr(),
-              maxLines: 4,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    overflow: TextOverflow.ellipsis,
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
+    return Padding(
+      padding: EdgeInsets.only(right: context.cMediumValue),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (isDesktop) SizedBox(height: context.cLargeValue * 10),
+          Align(
+            child: Image.asset(
+              ImageEnumsPng.logo.toPathPng,
+              width: isMobile
+                  ? context.cXxLargeValue * 5
+                  : isDesktop
+                      ? context.cXxLargeValue * 7
+                      : context.cXxLargeValue * 4,
+              fit: BoxFit.cover,
             ),
           ),
-        if (isDesktop)
-          Flexible(
-            child: Text(
-              StringConstants.main_screen_description,
-              maxLines: 15,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    overflow: TextOverflow.ellipsis,
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
+          SizedBox(height: ConstantSizes.xLarge.value * 2),
+          if (!isDesktop)
+            Flexible(
+              child: SelectableText(
+                StringConstants.main_screen_description.tr(),
+                maxLines: 5,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+              ),
             ),
-          ),
-        SizedBox(height: context.cXxLargeValue),
-      ],
+          if (isDesktop)
+            Flexible(
+              child: SelectableText(
+                StringConstants.main_screen_description,
+                maxLines: 15,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+              ),
+            ),
+          SizedBox(height: context.cXxLargeValue),
+        ],
+      ),
     );
   }
 }

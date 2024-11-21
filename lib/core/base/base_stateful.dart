@@ -24,7 +24,7 @@ abstract class BaseStateful<T extends StatefulWidget, VM extends ChangeNotifier>
   void onExit(int index) {
     setState(() {
       _hoverStates[index] = false;
-      isHovered = true;
+      isHovered = false;
     });
   }
 }

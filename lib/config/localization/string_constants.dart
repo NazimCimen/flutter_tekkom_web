@@ -7,7 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 final class StringConstants {
   const StringConstants();
 
-  static String get appName => 'TEKKOM İŞ MAKİNALARI A.Ş.';
+  static String get appName => 'Tekurt Endüstri ve Otomotiv';
   static String get main_screen_description => 'main_screen_description'.tr();
   static String get main_screen => 'main_screen'.tr();
   static String get contact_us => 'contact_us'.tr();

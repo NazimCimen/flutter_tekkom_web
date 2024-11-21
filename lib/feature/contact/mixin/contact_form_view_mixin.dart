@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
-import 'package:tekkom_web/feature/contact/view/contact_view.dart';
+import 'package:tekkom_web/feature/contact/widget/contact_form_widget.dart';
 import 'package:tekkom_web/product/services/contact_us_service.dart';
 
-mixin ContactFromViewMixin on State<FormWidget> {
+mixin ContactFromViewMixin on State<ContactFormWidget> {
   late final TextEditingController nameController;
   late final TextEditingController mailController;
   late final TextEditingController msgController;
