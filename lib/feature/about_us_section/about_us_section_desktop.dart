@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
-import 'package:tekkom_web/feature/section_title_text_widget.dart';
+import 'package:tekkom_web/product/widgets/section_title_text_widget.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 

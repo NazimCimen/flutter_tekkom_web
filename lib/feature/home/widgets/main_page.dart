@@ -2,9 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
+import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
-import 'package:tekkom_web/feature/request_call_back/request_call_back_view.dart';
-import 'package:tekkom_web/product/constants/some_constants.dart';
+import 'package:tekkom_web/feature/contact/widget/request_call_back_widget.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
@@ -25,17 +25,17 @@ class MainPage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              ImageEnumsPng.bg_home.toPathPng,
+              'assets/images/bg_test9.png',
               fit: BoxFit.cover,
             ),
           ),
           Positioned.fill(
             child: Container(
-              color: Theme.of(context).colorScheme.scrim.withOpacity(0.6),
+              color: Theme.of(context).colorScheme.scrim.withOpacity(0.5),
             ),
           ),
           Padding(
-            padding: SomeConstants.pageHorizontolPadding(context),
+            padding: context.pageHorizontolPadding(context),
             child: !isDesktop
                 ? Column(
                     children: [
@@ -95,7 +95,11 @@ class _HomeInfoWidget extends StatelessWidget {
         Align(
           child: Image.asset(
             ImageEnumsPng.logo.toPathPng,
-            width: !isMobile ? 200 : 170,
+            width: isMobile
+                ? context.cXxLargeValue * 5
+                : isDesktop
+                    ? context.cXxLargeValue * 7
+                    : context.cXxLargeValue * 4,
             fit: BoxFit.cover,
           ),
         ),
@@ -138,7 +142,7 @@ class _HomeInfoWidget extends StatelessWidget {
                   ),
             ),
           ),
-        SizedBox(height: ConstantSizes.xLarge.value),
+        SizedBox(height: context.cXxLargeValue),
       ],
     );
   }

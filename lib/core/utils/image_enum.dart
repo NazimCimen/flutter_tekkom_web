@@ -1,5 +1,7 @@
 enum ImageEnumsPng {
   logo,
+  logo_dark,
+
   logo_border,
   bg_home,
   img_services1,

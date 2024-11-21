@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/routes/app_routes.dart';
+import 'package:tekkom_web/config/routes/navigator_service.dart';
+import 'package:tekkom_web/core/base/base_stateful.dart';
 import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
-import 'package:tekkom_web/feature/section_title_text_widget.dart';
-import 'package:tekkom_web/product/constants/some_constants.dart';
+import 'package:tekkom_web/product/widgets/section_title_text_widget.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/product/widgets/custom_elevated_button.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
@@ -15,55 +17,47 @@ class OurServicesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
-    final isTablet = Responsive.isTablet(context);
-
     return SizedBox(
       width: Responsive.getWidth(context),
       child: Column(
         children: [
-          SizedBox(height: context.cXxLargeValue),
+          SizedBox(height: context.cXxLargeValue * 1.5),
           CustomTitleTextLargeWidget(
             text: StringConstants.our_services_small,
           ),
           SizedBox(height: context.cLowValue),
-          Text(
+          SelectableText(
             textAlign: TextAlign.center,
             'Araç ve iş makineleri tamirinde uzman ekibimizle güvenilir hizmet sunarken, \nyakıt tasarruf cihazlarımızla da verimliliğinizi artırıyoruz.',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Theme.of(context).colorScheme.onTertiary),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onTertiary,
+                  fontStyle: FontStyle.italic,
+                ),
           ),
           SizedBox(height: context.cXLargeValue),
           if (isDesktop)
             Padding(
-              padding: SomeConstants.pageHorizontolPadding(context),
+              padding: context.pageHorizontolPadding(context),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: _ServiceWidget(
+                    child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services1.toPathPng,
-                      title: 'Araç Tamir ve Bakımı',
-                      desc:
-                          'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
+                      title: 'Araç Tamir Ve Bakımı',
                     ),
                   ),
                   Flexible(
-                    child: _ServiceWidget(
+                    child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services2.toPathPng,
-                      title: 'İş Makineleri Tamir ve Bakımı',
-                      desc:
-                          'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
+                      title: 'İş Makineleri Tamir Ve Bakımı',
                     ),
                   ),
                   Flexible(
-                    child: _ServiceWidget(
+                    child: _HoverContainer(
                       imagePath: ImageEnumsPng.img_services3.toPathPng,
                       title: 'Yakıt Tasarruf Cihazı',
-                      desc:
-                          'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
                     ),
                   ),
                 ],
@@ -73,304 +67,140 @@ class OurServicesSection extends StatelessWidget {
             Padding(
               padding: context.cPaddingLarge,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _ServiceWidget(
+                  _HoverContainer(
                     imagePath: ImageEnumsPng.img_services1.toPathPng,
-                    title: 'Araç Tamir ve Bakımı',
-                    desc:
-                        'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
+                    title: 'Araç Tamir Ve Bakımı',
                   ),
-                  SizedBox(height: context.cMediumValue),
-                  _ServiceWidget(
+                  SizedBox(height: context.cLargeValue),
+                  _HoverContainer(
                     imagePath: ImageEnumsPng.img_services2.toPathPng,
-                    title: 'İş Makineleri Tamir ve Bakımı',
-                    desc:
-                        'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
+                    title: 'İş Makineleri Tamir Ve Bakımı',
                   ),
-                  SizedBox(height: context.cMediumValue),
-                  _ServiceWidget(
+                  SizedBox(height: context.cLargeValue),
+                  _HoverContainer(
                     imagePath: ImageEnumsPng.img_services3.toPathPng,
                     title: 'Yakıt Tasarruf Cihazı',
-                    desc:
-                        'Günümüzün En Önemli İhtiyaçlarından Birisi Şüphesiz ki Ulaşımdır Bu İhtiyacımızı Karşılayabilmek İçin Motorlu Taşıtlar (Otomobil,Motorsiklet vb.) Kullanırız Fakat Yıllar Geçtikçe Araçlarımızda Bazı Sorunlar Meydana Gelir ve Eğer  Bu Sorunlar Zamanında Uzman Kişilerce Kontrol Edilmez ve Onarımı Yapılmazsa Çok Büyük Problemlere Yol Açabilir Eğer ki Aracınızda Herhangi Bir Sorun Varsa 30 Yıllık Deneyimi ve Bilgisi Olan Ustalarımızdan Yardım Talep Edebilirsiniz ',
                   ),
                 ],
               ),
             ),
-          SizedBox(height: context.cXxLargeValue),
-          Container(
-            width: Responsive.getWidth(context),
-            height: 400,
-            child: Stack(
-              children: [
-                // Arka plan resmi
-                Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/bg_test4.png',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
+          SizedBox(height: context.cXLargeValue),
+          Padding(
+            padding: context.cPaddingMedium,
+            child: SelectableText(
+              textAlign: TextAlign.center,
+              'Hizmetlerimizle işlerinizi kolaylaştırmak ve güvenilir çözümler sunmak için buradayız. '
+              'Daha fazla bilgi için bizimle iletişime geçebilirsiniz.',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontStyle: FontStyle.italic,
+                    color: Theme.of(context).colorScheme.onTertiary,
                   ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Theme.of(context).colorScheme.scrim.withOpacity(0.5),
-                        Colors.transparent,
-                      ],
-                      begin: Alignment.centerRight,
-                      end: Alignment.centerLeft,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: SizedBox(
-                    width: context.cXxLargeValue * 11,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        right: isDesktop
-                            ? context.cXLargeValue * 5
-                            : isTablet
-                                ? context.cMediumValue * 2
-                                : context.cMediumValue,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'SİZİ ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium
-                                      ?.copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: 'DİNLİYORUZ',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium
-                                      ?.copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surface,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Text(
-                            textAlign: TextAlign.end,
-                            'Her türlü çözüm önerileri sunuyoruz',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                ),
-                          ),
-                          SizedBox(height: context.cXLargeValue),
-                          Text(
-                            textAlign: TextAlign.end,
-                            'Sizlere anında hizmet üretiyoruz. Kaliteli ekipmanımız ve işinde uzman çalışanlarımızla sizlere dört dörtlük hizmet sunuyoruz.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                ),
-                          ),
-                          SizedBox(height: context.cLargeValue),
-                          Text(
-                            textAlign: TextAlign.end,
-                            'Belirttiğiniz sorunları, ürün ve hizmetleri önce sizden dinliyor sonra, üstün kalite ile araç bakım hizmetlerini sizlere sunuyoruz.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
             ),
           ),
-
-          /*   Stack(
-            children: [
-              Positioned.fill(
-                child: Image.asset(
-                  'assets/images/bg_test3.png',
-                  fit: BoxFit.cover,
-                  width: Responsive.getWidth(context),
-                  //    height: context.cXxLargeValue * 7,
-                ),
-              ),
-              Positioned.fill(
-                child: Container(
-                  color: Theme.of(context).colorScheme.scrim.withOpacity(0.1),
-                ),
-              ),
-              SizedBox(
-                width: 500,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'SİZİ ',
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.surface,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          TextSpan(
-                            text: 'DİNLİYORUZ',
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium
-                                ?.copyWith(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      'Her türlü çözüm önerileri sunuyoruz',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
-                    ),
-                    SizedBox(height: context.cXxLargeValue),
-                    Text(
-                      'Sizlere anında hizmet üretiyoruz. Kaliteli ekipmanımız ve işinde uzman çalışanlarımızla sizlere dört dörtlük hizmet sunuyoruz.',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
-                    ),
-                    SizedBox(height: context.cLargeValue),
-                    Text(
-                      'Belirttiğiniz sorunları, ürün ve hizmetleri önce sizden dinliyor sonra, üstün kalite ile araç bakım hizmetlerini sizlere sunuyoruz.',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),*/
-          /*    SizedBox(
-            width: Responsive.getWidth(context),
-            height: ConstantSizes.largePageHeight.value,
-            child: Stack(
-              children: [
-                Positioned(
-                  child: Image.asset(
-                    'assets/images/bg_test3.png',
-                    fit: BoxFit.cover,
-                    width: Responsive.getWidth(context),
-                    height: context.cXxLargeValue * 7,
-                  ),
-                ),
-                Positioned.fill(
-                  child: Container(
-                    color: Theme.of(context).colorScheme.scrim.withOpacity(0.6),
-                  ),
-                ),
-              ],
-            ),
-          ),*/
+          SizedBox(height: context.cLowValue),
+          CustomElevatedButtonWidget(
+            text: 'BİZE ULAŞIN',
+            onPress: () {
+              NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
+            },
+          ),
+          SizedBox(height: context.cXxLargeValue * 1.5),
         ],
       ),
     );
   }
 }
 
-class _ServiceWidget extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String desc;
-  const _ServiceWidget({
+class _HoverContainer extends StatefulWidget {
+  const _HoverContainer({
     required this.imagePath,
     required this.title,
-    required this.desc,
   });
+  final String imagePath;
+  final String title;
 
   @override
+  State<_HoverContainer> createState() => _HoverContainerState();
+}
+
+class _HoverContainerState
+    extends BaseStateful<_HoverContainer, ChangeNotifier> {
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        width: Responsive.isMobile(context)
-            ? double.maxFinite
-            : Responsive.isTablet(context)
-                ? context.cXLargeValue * 17
-                : context.cXLargeValue * 15,
-        padding: context.cPaddingLarge,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: context.cBorderRadiusAllLow / 2,
-        ),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: context.cBorderRadiusAllLow / 2,
-              child: Image.asset(
-                imagePath,
+    return MouseRegion(
+      onEnter: (event) {
+        onEnter(0);
+      },
+      onExit: (event) {
+        onEnter(0);
+      },
+      child: Stack(
+        children: [
+          Container(
+            width: context.cXLargeValue * 10,
+            height: context.cXLargeValue * 8,
+            decoration: BoxDecoration(
+              borderRadius: context.cBorderRadiusAllLow,
+              image: DecorationImage(
+                image: AssetImage(widget.imagePath),
                 fit: BoxFit.cover,
-                width: Responsive.isMobile(context)
-                    ? double.maxFinite
-                    : Responsive.isTablet(context)
-                        ? context.cXLargeValue * 17
-                        : context.cXLargeValue * 15,
               ),
             ),
-            SizedBox(height: context.cMediumValue),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: context.cLowValue),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    colorScheme.scrim.withOpacity(0.7),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                borderRadius: BorderRadius.vertical(
+                  top: context.cBorderRadiusAllLow.topLeft,
+                ),
+              ),
+              child: Text(
+                widget.title,
+                textAlign: TextAlign.center,
+                style: textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.surface,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            SizedBox(height: context.cLowValue),
-            Text(
-              desc,
-              style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          if (isHovered)
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: colorScheme.scrim.withOpacity(0.6),
+                  borderRadius: context.cBorderRadiusAllLow,
+                ),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content:
+                              Text('İnceleme sayfasına yönlendiriliyor...'),
+                        ),
+                      );
+                    },
+                    child: const Text('İncele'),
+                  ),
+                ),
+              ),
             ),
-            SizedBox(height: context.cLowValue),
-            CustomElevatedButtonWidget(
-              text: StringConstants.contact_us,
-              onPress: () {},
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }

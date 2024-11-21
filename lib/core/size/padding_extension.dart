@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/dynamic_size.dart';
+import 'package:tekkom_web/responsive/responsive.dart';
 
 /// CONSTANT PADDING VALUES
 extension ConstantPaddingExtension on BuildContext {
@@ -9,6 +10,18 @@ extension ConstantPaddingExtension on BuildContext {
   EdgeInsets get cPaddingLarge => EdgeInsets.all(cLargeValue);
   EdgeInsets get cPaddingxLarge => EdgeInsets.all(cXLargeValue);
   EdgeInsets get cPaddingxxLarge => EdgeInsets.all(cXxLargeValue);
+  EdgeInsets pageHorizontolPadding(BuildContext context) => EdgeInsets.only(
+        left: Responsive.isDesktop(context)
+            ? context.dynamicWidht(0.1)
+            : Responsive.isTablet(context)
+                ? context.cXxLargeValue
+                : context.cLargeValue,
+        right: Responsive.isDesktop(context)
+            ? context.dynamicWidht(0.1)
+            : Responsive.isTablet(context)
+                ? context.cXxLargeValue
+                : context.cLargeValue,
+      );
 }
 
 /// DYNAMIC PADDING VALUES

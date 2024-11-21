@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/routes/app_routes.dart';
+import 'package:tekkom_web/config/routes/navigator_service.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/feature/footer/widgets/footer_link_widget.dart';
 
@@ -21,19 +23,19 @@ class NavigateServicesWidget extends StatelessWidget {
         FooterLink(
           title: 'Araç Tamir Ve Bakımı',
           onTap: () {
-            //   NavigatorService.instance.navigateTo('/services/car-maintenance');
+            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
           },
         ),
         FooterLink(
           title: 'Yakıt Tasarruf Cihazı',
           onTap: () {
-            //      NavigatorService.instance.navigateTo('/services/fuel-saving');
+            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
           },
         ),
         FooterLink(
           title: 'İş Makineleri Tamir Ve Bakımı',
           onTap: () {
-            //    NavigatorService.instance.navigateTo('/services/machine-maintenance');
+            NavigatorService.pushNamed(AppRoutes.serviceDetailView);
           },
         ),
         SizedBox(height: context.cMediumValue),

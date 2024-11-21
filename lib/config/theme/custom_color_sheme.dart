@@ -16,7 +16,7 @@ final class CustomColorScheme {
     surface: Color(0xFFFFFFFF),
     scrim: Colors.black,
     secondaryContainer: Colors.blueGrey,
-    tertiaryContainer: Colors.green,
+    tertiaryContainer: Colors.black87,
     tertiaryFixed: Color(0xffe42424),
     onSurface: Color(0xFF000000),
     onPrimaryContainer: Color(0xFFE0E0E0),

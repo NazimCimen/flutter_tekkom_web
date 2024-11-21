@@ -1,8 +1,7 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-final class AppLanguages extends Equatable {
+final class AppLanguages {
   final String name;
   final String flagPath;
   final Locale locale;
@@ -12,7 +11,4 @@ final class AppLanguages extends Equatable {
     required this.flagPath,
     required this.locale,
   });
-
-  @override
-  List<Object?> get props => [name, flagPath, locale];
 }

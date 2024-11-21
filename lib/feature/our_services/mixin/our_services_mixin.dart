@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tekkom_web/feature/home/view/home_view.dart';
 import 'package:tekkom_web/feature/our_services/view/our_services_view.dart';
 
 mixin OurServicesMixin on State<OurServicesView> {
@@ -15,8 +14,9 @@ mixin OurServicesMixin on State<OurServicesView> {
 
   @override
   void dispose() {
-    scrollController.removeListener(_scrollListener);
-    scrollController.dispose();
+    scrollController
+      ..removeListener(_scrollListener)
+      ..dispose();
     super.dispose();
   }
 
