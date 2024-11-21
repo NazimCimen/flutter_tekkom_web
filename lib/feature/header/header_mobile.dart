@@ -1,33 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
+import 'package:tekkom_web/core/size/padding_extension.dart';
+import 'package:tekkom_web/feature/header/provider/header_provider.dart';
 import 'package:tekkom_web/feature/language_selector/presentation/language_selector_widget.dart';
-import 'package:tekkom_web/product/constants/some_constants.dart';
+import 'package:tekkom_web/product/components/custom_snack_bars.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/product/decorations/box_decorations/custom_box_decoration.dart';
-import 'package:tekkom_web/product/services/url_service.dart';
 
 class HeaderMobile extends StatelessWidget {
-  final void Function(int) sectionNavButton;
-  final GlobalKey<ScaffoldState> scaffoldKey;
-  final bool isHeaderTransparent;
+  const HeaderMobile({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder:
+          (BuildContext context, HeaderProvider controller, Widget? child) {
+        if (controller.errorMsg != null) {
+          SchedulerBinding.instance.addPostFrameCallback(
+            (_) {
+              CustomSnackBars.showErrorSnackbar(context, controller.errorMsg!);
+              controller.snackBarDuration();
+            },
+          );
+        }
+        return const _Body();
+      },
+    );
+  }
+}
 
-  const HeaderMobile({
-    required this.sectionNavButton,
-    required this.scaffoldKey,
-    required this.isHeaderTransparent,
-    super.key,
-  });
+class _Body extends BaseStateless<HeaderProvider> {
+  const _Body();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
           Visibility(
-            visible: isHeaderTransparent,
+            visible: watchViewModel(context).isHeaderTransparent,
             child: SizedBox(
               height: context.cXLargeValue,
               child: Container(
-                padding: SomeConstants.pageHorizontolPadding(context),
+                padding: context.pageHorizontolPadding(context),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -42,7 +59,7 @@ class HeaderMobile extends StatelessWidget {
                   children: [
                     _ContactHeaderInfo(
                       icon: Icons.phone,
-                      launchUrl: UrlService.launchWhatsap,
+                      launchUrl: context.read<HeaderProvider>().handleWhatsApp,
                       text: StringConstants.contact_info_phone,
                     ),
                     SizedBox(
@@ -50,15 +67,18 @@ class HeaderMobile extends StatelessWidget {
                     ),
                     _ContactHeaderInfo(
                       icon: Icons.mail_outline,
-                      launchUrl: UrlService.launchWhatsap,
+                      launchUrl: context.read<HeaderProvider>().handleEmail,
+                      text: StringConstants.contact_info_mail,
+                    ),
+                    SizedBox(
+                      width: context.cMediumValue,
+                    ),
+                    _ContactHeaderInfo(
+                      icon: Icons.location_on_outlined,
+                      launchUrl: context.read<HeaderProvider>().handleMap,
                       text: StringConstants.contact_info_mail,
                     ),
                     const Spacer(),
-                    Icon(
-                      Icons.wb_sunny_outlined,
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                    SizedBox(width: context.cMediumValue),
                     Padding(
                       padding: EdgeInsets.only(
                         top: context.cLowValue / 2,
@@ -74,34 +94,33 @@ class HeaderMobile extends StatelessWidget {
           Container(
             height: ConstantSizes.xLarge.value * 2,
             width: double.maxFinite,
-            padding: SomeConstants.pageHorizontolPadding(context),
+            padding: context.pageHorizontolPadding(context),
             decoration: CustomBoxDecoration.customHeaderDecoration(
               context,
-              isHeaderTransparent,
+              watchViewModel(context).isHeaderTransparent,
             ),
             child: Row(
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      scaffoldKey.currentState?.openDrawer();
-                    },
+                GestureDetector(
+                  onTap: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  child: Align(
+                    alignment: Alignment.centerLeft,
                     child: Icon(
                       Icons.menu_outlined,
-                      color: isHeaderTransparent
-                          ? Theme.of(context).colorScheme.surface
-                          : Theme.of(context).colorScheme.scrim,
+                      color: watchViewModel(context).isHeaderTransparent
+                          ? colorScheme(context).surface
+                          : colorScheme(context).scrim,
                     ),
                   ),
                 ),
                 const Spacer(),
-                Text(
+                SelectableText(
                   StringConstants.appName,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: isHeaderTransparent
+                        color: watchViewModel(context).isHeaderTransparent
                             ? Theme.of(context).colorScheme.surface
                             : Theme.of(context).colorScheme.scrim,
                       ),

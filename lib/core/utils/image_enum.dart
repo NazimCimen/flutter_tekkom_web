@@ -1,11 +1,14 @@
 enum ImageEnumsPng {
   logo,
-  logo_border,
+  logo_dark,
   bg_home,
+  bg_contact,
+  bg_section,
+  bg_services,
+  bg_about,
   img_services1,
   img_services2,
   img_services3,
-  img_about_us,
   ic_flag_tr,
   ic_flag_en,
 }

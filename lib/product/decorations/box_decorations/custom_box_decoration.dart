@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 
 @immutable
 final class CustomBoxDecoration {
@@ -21,4 +22,17 @@ final class CustomBoxDecoration {
           : Theme.of(context).colorScheme.surface,
     );
   }
+
+  static BoxDecoration customBoxDecoration(BuildContext context) =>
+      BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: context.cBorderRadiusAllLow,
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).colorScheme.scrim.withOpacity(0.1),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      );
 }

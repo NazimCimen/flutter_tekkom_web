@@ -15,7 +15,7 @@ final class CustomLightTheme implements ApplicationTheme {
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
         colorScheme: CustomColorScheme.lightScheme,
-        fontFamily: GoogleFonts.montserrat().fontFamily,
-        scaffoldBackgroundColor: Color(0xfff5f5f5),
+        fontFamily: GoogleFonts.poppins().fontFamily,
+        scaffoldBackgroundColor: const Color(0xfff5f5f5),
       );
 }

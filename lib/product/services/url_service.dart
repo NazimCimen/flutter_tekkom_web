@@ -1,17 +1,47 @@
+import 'package:tekkom_web/core/error/exception.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-final class UrlService {
-  UrlService._();
-  static Future<void> launchWhatsap() async {
+abstract class UrlService {
+  const UrlService();
+  Future<void> launchWhatsap();
+  Future<void> launchMail();
+  Future<void> launchMap();
+}
+
+class UrlServiceImpl extends UrlService {
+  @override
+  Future<void> launchWhatsap() async {
     const phone = '+905363017892';
-    final Uri url = Uri.parse('https://wa.me/$phone');
+    final url = Uri.parse('https://wa.me/$phone');
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
-      throw 'WhatsApp açılamadı';
+      throw LaunchUrlException('WhatsApp açılamadı');
     }
   }
 
-  static Future<void> launchMail() async {}
-  static Future<void> launchMap() async {}
+  @override
+  Future<void> launchMap() async {
+    const googleMapsUrl =
+        'https://www.google.com/maps/search/?api=1&query=38.031198,32.602152';
+    final mapUri = Uri.parse(googleMapsUrl);
+    if (await canLaunchUrl(mapUri)) {
+      await launchUrl(mapUri, mode: LaunchMode.externalApplication);
+    } else {
+      throw LaunchUrlException('Harita açılamadı');
+    }
+  }
+
+  @override
+  Future<void> launchMail() async {
+    final emailUri = Uri(
+      scheme: 'mailto',
+      path: 'tekurt43@gmail.com',
+    );
+    if (await canLaunchUrl(emailUri)) {
+      await launchUrl(emailUri);
+    } else {
+      throw LaunchUrlException('E-posta açılamadı');
+    }
+  }
 }
