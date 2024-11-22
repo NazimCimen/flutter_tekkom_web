@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
 
 class CopyrightWidget extends BaseStateless<void> {
@@ -10,7 +11,7 @@ class CopyrightWidget extends BaseStateless<void> {
       children: [
         Center(
           child: SelectableText(
-            'Copyright © 2024. Tüm Hakları Saklıdır.',
+            StringConstants.footer_copyrights,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Theme.of(context).colorScheme.outlineVariant,
@@ -20,7 +21,7 @@ class CopyrightWidget extends BaseStateless<void> {
         Center(
           child: SelectableText(
             cursorColor: colorScheme(context).surface,
-            'Flutter 3.22.0 ile geliştirildi. Nazım Çimen +90 552 346 18 42',
+            StringConstants.footer_copyrights_dev,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                   color: Theme.of(context).colorScheme.outlineVariant,

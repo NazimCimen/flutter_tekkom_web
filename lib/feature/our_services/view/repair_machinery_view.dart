@@ -9,7 +9,7 @@ import 'package:tekkom_web/feature/footer/footer_widget_desktop.dart';
 import 'package:tekkom_web/feature/footer/footer_widget_mobile.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
-import 'package:tekkom_web/product/constants/custom_shadows.dart';
+import 'package:tekkom_web/product/widgets/section_background_widget.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
 class RepairMachineryView extends StatefulWidget {
@@ -61,123 +61,13 @@ class _BodyContent extends BaseStateless<void> {
               SizedBox(
                 key: sectionKeys.first,
               ),
-              SizedBox(
-                width: Responsive.getWidth(context),
-                height: ConstantSizes.smallPageHeight.value / 1.3,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        ImageEnumsPng.img_services2.toPathPng,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned.fill(
-                      child: Container(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .scrim
-                            .withOpacity(0.4),
-                      ),
-                    ),
-                    Align(
-                      child: Padding(
-                        padding: context.cPaddingMedium,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'İş Makineları Tamir ve Bakımı',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displayLarge
-                                  ?.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                    fontWeight: FontWeight.bold,
-                                    shadows:
-                                        CustomShadows.customLowShadow(context),
-                                  ),
-                            ),
-                            SizedBox(height: context.cMediumValue),
-                            Text(
-                              textAlign: TextAlign.center,
-                              'İş makinelerinizin verimli çalışmasını sağlamak için bakım ve tamir hizmeti sunar, uzun ömürlü ve güvenli kullanım garantileriz.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                    fontStyle: FontStyle.italic,
-                                    color:
-                                        Theme.of(context).colorScheme.tertiary,
-                                    shadows:
-                                        CustomShadows.customLowShadow(context),
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              SectionBackgroundWidget(
+                title: 'İş Makineları Tamir ve Bakımı',
+                desc:
+                    'İş makinelerinizin verimli çalışmasını sağlamak için bakım ve tamir hizmeti sunar, uzun ömürlü ve güvenli kullanım garantileriz.',
+                bgImagePath: ImageEnumsPng.img_services2.toPathPng,
               ),
-              Padding(
-                padding: context.pageHorizontolPadding(context),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: context.cXLargeValue),
-                    _title(context, 'İş Makinaları Tamir ve Bakımı'),
-                    _description(
-                      context,
-                      'İş makineleri, zorlu koşullarda ve yoğun kullanımda çalışan, yüksek performans gerektiren araçlardır. Bu makinelerin düzgün çalışması, sadece işlerin zamanında ve verimli bir şekilde yapılmasını sağlamakla kalmaz, aynı zamanda güvenlik açısından da kritik öneme sahiptir. İş makinelerinin düzenli bakımı, uzun ömürlü ve kesintisiz çalışma için şarttır.',
-                    ),
-                    _title(context, 'İş Makinaları Bakımı Neden Önemlidir?'),
-                    _description(
-                      context,
-                      'İş makineleri, inşaat, madencilik, tarım gibi sektörlerde hayati rol oynar. Bu makinelerin zamanında bakımı, arızaların önlenmesi, büyük tamir maliyetlerinin engellenmesi ve makinelerin ömrünün uzatılması için gereklidir. Düzenli bakım, makinelerin performansını artırır ve beklenmedik arızaların önüne geçer.',
-                    ),
-                    _title(context, 'Bakım ve Onarım Süreçleri'),
-                    _description(
-                      context,
-                      'İş makinelerinin bakımı, sadece motor yağı değişimi gibi temel işlemlerle sınırlı değildir. Her makine, kullanım alanına ve modeline göre farklı bakım ihtiyaçları gerektirir. Arızaların erken tespiti, iş makinelerinin yüksek performansla çalışmaya devam etmesini sağlar. Bakım sırasında şu işlemler yapılabilir:\n-Yağ değişimi ve filtrelerin kontrolü: Motor yağı ve filtreler, makinelerin sağlıklı çalışabilmesi için düzenli olarak değiştirilmelidir. \n- Hidrolik sistem bakımı: Hidrolik sistemlerin bakımı, iş makinelerinin güç aktarımını etkileyen kritik bir faktördür.\n- Elektrik ve akü kontrolü: Elektriksel bileşenler ve aküler düzenli olarak kontrol edilmeli, arızalar erken tespit edilmelidir.\n- Fren ve süspansiyon sistemi bakımı: Makinelerin güvenliği için fren sistemlerinin düzenli olarak kontrol edilmesi gerekmektedir.',
-                    ),
-                    _title(context, 'Arıza Onarımları'),
-                    _description(
-                      context,
-                      'İş makinelerindeki arızalar, büyük kayıplara yol açabilir. Bu nedenle, meydana gelen her türlü arızanın hızlı ve doğru bir şekilde tespit edilmesi ve onarılması çok önemlidir. Arıza onarım süreci, makinelerin eski verimliliğine kavuşturulmasını sağlar ve işlerin aksamadan devam etmesini temin eder.Yapılan onarımlar şunları içerebilir:',
-                    ),
-                    _subTitle(context, 'Periyodik Bakım:'),
-                    _description(
-                      context,
-                      'Aracınızın düzenli bakımı, sorunsuz bir sürüş için temel bir gerekliliktir. Yağ ve filtre değişimi, sıvı kontrolleri, fren ve lastik kontrolleri gibi rutin işlemleri özenle gerçekleştiriyoruz.',
-                    ),
-                    _subTitle(context, 'Motor onarımı: '),
-                    _description(
-                      context,
-                      'Motor arızaları genellikle ciddi sonuçlar doğurur. Motorun parçalarının onarılması veya değiştirilmesi gerekebilir.',
-                    ),
-                    _subTitle(
-                      context,
-                      'Hidrolik sistem onarımı: ',
-                    ),
-                    _description(
-                      context,
-                      'Hidrolik sistemde meydana gelen arızalar, makinelerin çalışmasını engelleyebilir. Bu tür onarımlar zamanında yapılmalıdır.',
-                    ),
-                    _subTitle(
-                      context,
-                      'Elektrik ve elektronik sistem onarımı:',
-                    ),
-                    _description(
-                      context,
-                      'Elektriksel arızalar da makinelerin işlevselliğini bozabilir. Bu tip arızaların tespiti ve onarımı hızla gerçekleştirilmelidir.',
-                    ),
-                    SizedBox(height: context.cMediumValue),
-                  ],
-                ),
-              ),
+              const _Body(),
               BrandCarousel(),
               const Responsive(
                 desktop: FooterWidgetDesktop(),
@@ -186,6 +76,70 @@ class _BodyContent extends BaseStateless<void> {
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Body extends BaseStateless<void> {
+  const _Body();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: context.pageHorizontolPadding(context),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: context.cXLargeValue),
+          _title(context, 'İş Makinaları Tamir ve Bakımı'),
+          _description(
+            context,
+            'İş makineleri, zorlu koşullarda ve yoğun kullanımda çalışan, yüksek performans gerektiren araçlardır. Bu makinelerin düzgün çalışması, sadece işlerin zamanında ve verimli bir şekilde yapılmasını sağlamakla kalmaz, aynı zamanda güvenlik açısından da kritik öneme sahiptir. İş makinelerinin düzenli bakımı, uzun ömürlü ve kesintisiz çalışma için şarttır.',
+          ),
+          _title(context, 'İş Makinaları Bakımı Neden Önemlidir?'),
+          _description(
+            context,
+            'İş makineleri, inşaat, madencilik, tarım gibi sektörlerde hayati rol oynar. Bu makinelerin zamanında bakımı, arızaların önlenmesi, büyük tamir maliyetlerinin engellenmesi ve makinelerin ömrünün uzatılması için gereklidir. Düzenli bakım, makinelerin performansını artırır ve beklenmedik arızaların önüne geçer.',
+          ),
+          _title(context, 'Bakım ve Onarım Süreçleri'),
+          _description(
+            context,
+            'İş makinelerinin bakımı, sadece motor yağı değişimi gibi temel işlemlerle sınırlı değildir. Her makine, kullanım alanına ve modeline göre farklı bakım ihtiyaçları gerektirir. Arızaların erken tespiti, iş makinelerinin yüksek performansla çalışmaya devam etmesini sağlar. Bakım sırasında şu işlemler yapılabilir:\n-Yağ değişimi ve filtrelerin kontrolü: Motor yağı ve filtreler, makinelerin sağlıklı çalışabilmesi için düzenli olarak değiştirilmelidir. \n- Hidrolik sistem bakımı: Hidrolik sistemlerin bakımı, iş makinelerinin güç aktarımını etkileyen kritik bir faktördür.\n- Elektrik ve akü kontrolü: Elektriksel bileşenler ve aküler düzenli olarak kontrol edilmeli, arızalar erken tespit edilmelidir.\n- Fren ve süspansiyon sistemi bakımı: Makinelerin güvenliği için fren sistemlerinin düzenli olarak kontrol edilmesi gerekmektedir.',
+          ),
+          _title(context, 'Arıza Onarımları'),
+          _description(
+            context,
+            'İş makinelerindeki arızalar, büyük kayıplara yol açabilir. Bu nedenle, meydana gelen her türlü arızanın hızlı ve doğru bir şekilde tespit edilmesi ve onarılması çok önemlidir. Arıza onarım süreci, makinelerin eski verimliliğine kavuşturulmasını sağlar ve işlerin aksamadan devam etmesini temin eder.Yapılan onarımlar şunları içerebilir:',
+          ),
+          _subTitle(context, 'Periyodik Bakım:'),
+          _description(
+            context,
+            'Aracınızın düzenli bakımı, sorunsuz bir sürüş için temel bir gerekliliktir. Yağ ve filtre değişimi, sıvı kontrolleri, fren ve lastik kontrolleri gibi rutin işlemleri özenle gerçekleştiriyoruz.',
+          ),
+          _subTitle(context, 'Motor onarımı: '),
+          _description(
+            context,
+            'Motor arızaları genellikle ciddi sonuçlar doğurur. Motorun parçalarının onarılması veya değiştirilmesi gerekebilir.',
+          ),
+          _subTitle(
+            context,
+            'Hidrolik sistem onarımı: ',
+          ),
+          _description(
+            context,
+            'Hidrolik sistemde meydana gelen arızalar, makinelerin çalışmasını engelleyebilir. Bu tür onarımlar zamanında yapılmalıdır.',
+          ),
+          _subTitle(
+            context,
+            'Elektrik ve elektronik sistem onarımı:',
+          ),
+          _description(
+            context,
+            'Elektriksel arızalar da makinelerin işlevselliğini bozabilir. Bu tip arızaların tespiti ve onarımı hızla gerçekleştirilmelidir.',
+          ),
+          SizedBox(height: context.cMediumValue),
         ],
       ),
     );

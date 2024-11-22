@@ -46,7 +46,6 @@ class CustomIconButton extends BaseStateless<void> {
                       color: isOnHeader
                           ? colorScheme(context).scrim
                           : colorScheme(context).surface,
-                      overflow: TextOverflow.ellipsis,
                     ),
               ),
             ),

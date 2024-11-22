@@ -22,7 +22,7 @@ class FooterHeaderWidget extends StatelessWidget {
         ),
         SizedBox(height: context.cMediumValue),
         SelectableText(
-          'Araç Tamir-Bakım / İş Makineleri Tamiri / Yakıt Tasarruf Cihazı',
+          '${StringConstants.our_services1} / ${StringConstants.our_services2} / ${StringConstants.our_services3}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context).colorScheme.outlineVariant,
               ),
@@ -31,7 +31,7 @@ class FooterHeaderWidget extends StatelessWidget {
         Row(
           children: [
             SelectableText(
-              'Sosyal Medya',
+              StringConstants.footer_social_media,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.surface,
                     fontWeight: FontWeight.bold,

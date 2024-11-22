@@ -23,15 +23,13 @@ class _ContactInfoWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: Responsive.isDesktop(context)
-          ? context.cPaddingxLarge
-          : context.cPaddingSmall,
+      padding: context.pageHorizontolPadding(context),
       decoration: CustomBoxDecoration.customBoxDecoration(context),
       child: Column(
         children: [
           SizedBox(height: context.cLargeValue),
           SelectableText(
-            'Bize Ulaşın',
+            StringConstants.contact_info_title,
             style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -52,7 +50,10 @@ class _ContactInfoWidgetState
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(ImageEnumsPng.logo_dark.toPathPng),
+                Image.asset(
+                  ImageEnumsPng.logo_dark.toPathPng,
+                  fit: BoxFit.cover,
+                ),
                 SizedBox(
                   height: context.cLargeValue,
                 ),
@@ -121,8 +122,10 @@ class _ContactInfoWidgetState
                   ImageEnumsPng.logo_dark.toPathPng,
                   height: !Responsive.isMobile(context)
                       ? context.cXxLargeValue * 2.3
-                      : context.cXxLargeValue * 2,
-                  fit: BoxFit.cover,
+                      : Responsive.isTablet(context)
+                          ? context.cLargeValue * 8
+                          : context.cLargeValue * 5,
+                  fit: BoxFit.contain,
                 ),
                 SizedBox(height: context.cLargeValue),
                 MouseRegion(

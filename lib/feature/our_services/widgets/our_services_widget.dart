@@ -152,86 +152,94 @@ class _HoverContainerState
     extends BaseStateful<_HoverContainer, ChangeNotifier> {
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) {
-        onEnter(0);
+    return GestureDetector(
+      onTap: () {
+        widget.scrollController.jumpTo(0);
+        NavigatorService.pushNamed(
+          widget.route,
+        );
       },
-      onExit: (event) {
-        onExit(0);
-      },
-      child: Stack(
-        children: [
-          Container(
-            width: context.cXLargeValue * 10,
-            height: context.cXLargeValue * 8,
-            decoration: BoxDecoration(
-              borderRadius: context.cBorderRadiusAllLow,
-              image: DecorationImage(
-                image: AssetImage(widget.imagePath),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: context.cLowValue),
+      child: MouseRegion(
+        onEnter: (event) {
+          onEnter(0);
+        },
+        onExit: (event) {
+          onExit(0);
+        },
+        child: Stack(
+          children: [
+            Container(
+              width: context.cXLargeValue * 10,
+              height: context.cXLargeValue * 8,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    colorScheme.scrim.withOpacity(0.7),
-                    Colors.transparent,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-                borderRadius: BorderRadius.vertical(
-                  top: context.cBorderRadiusAllLow.topLeft,
-                ),
-              ),
-              child: Text(
-                widget.title,
-                textAlign: TextAlign.center,
-                style: textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.surface,
-                  fontWeight: FontWeight.bold,
+                borderRadius: context.cBorderRadiusAllLow,
+                image: DecorationImage(
+                  image: AssetImage(widget.imagePath),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-          ),
-          if (isHovered)
-            Positioned.fill(
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
               child: Container(
+                padding: EdgeInsets.symmetric(vertical: context.cLowValue),
                 decoration: BoxDecoration(
-                  color: colorScheme.scrim.withOpacity(0.6),
-                  borderRadius: context.cBorderRadiusAllLow,
+                  gradient: LinearGradient(
+                    colors: [
+                      colorScheme.scrim.withOpacity(0.7),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  borderRadius: BorderRadius.vertical(
+                    top: context.cBorderRadiusAllLow.topLeft,
+                  ),
                 ),
-                child: Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: colorScheme.primary,
-                      shape: ContinuousRectangleBorder(
-                        borderRadius: context.cBorderRadiusAllLow,
-                      ),
-                    ),
-                    onPressed: () {
-                      widget.scrollController.jumpTo(0);
-                      NavigatorService.pushNamed(
-                        widget.route,
-                      );
-                    },
-                    child: Text(
-                      'İncele',
-                      style: textTheme.bodyMedium
-                          ?.copyWith(color: colorScheme.surface),
-                    ),
+                child: Text(
+                  widget.title,
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyMedium?.copyWith(
+                    color: colorScheme.surface,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-        ],
+            if (isHovered)
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: colorScheme.scrim.withOpacity(0.6),
+                    borderRadius: context.cBorderRadiusAllLow,
+                  ),
+                  child: Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: colorScheme.primary,
+                        shape: ContinuousRectangleBorder(
+                          borderRadius: context.cBorderRadiusAllLow,
+                        ),
+                      ),
+                      onPressed: () {
+                        widget.scrollController.jumpTo(0);
+                        NavigatorService.pushNamed(
+                          widget.route,
+                        );
+                      },
+                      child: Text(
+                        'İncele',
+                        style: textTheme.bodyMedium
+                            ?.copyWith(color: colorScheme.surface),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

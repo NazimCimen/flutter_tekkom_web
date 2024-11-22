@@ -29,8 +29,29 @@ class CustomTitleTextMediumWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SelectableText(
+      textAlign: TextAlign.center,
       text,
       style: Theme.of(context).textTheme.displaySmall?.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontWeight: FontWeight.bold,
+          ),
+    );
+  }
+}
+
+class CustomTitleTextSmallWidget extends StatelessWidget {
+  final String text;
+  const CustomTitleTextSmallWidget({
+    required this.text,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SelectableText(
+      textAlign: TextAlign.center,
+      text,
+      style: Theme.of(context).textTheme.titleLarge?.copyWith(
             color: Theme.of(context).colorScheme.onSurface,
             fontWeight: FontWeight.bold,
           ),

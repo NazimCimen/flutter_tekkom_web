@@ -18,13 +18,19 @@ extension PngExtension on ImageEnumsPng {
 }
 
 enum ImageEnumsSvg {
-  ic_home,
-  ic_texttile,
-  ic_mining,
-  ic_contact_us,
-  ic_location,
-  ic_phone,
-  ic_mail,
+  car_audi,
+  car_bmw,
+  car_citroen,
+  car_chevrolet,
+  car_fiat,
+  car_ford,
+  car_mazda,
+  car_mercedes,
+  car_mitsubishi,
+  car_opel,
+  car_seat,
+  car_skoda,
+  car_volvo,
 }
 
 extension SvgExtension on ImageEnumsSvg {

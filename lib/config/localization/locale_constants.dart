@@ -9,11 +9,7 @@ final class LocaleConstants {
   static const enLocale = Locale('en', 'US');
   static const localePath = 'assets/lang';
 
-  static final AppLanguages defaultLanguage = AppLanguages(
-    name: 'TR',
-    locale: trLocale,
-    flagPath: ImageEnumsPng.ic_flag_tr.toPathPng,
-  ); //languageList[0];
+  static final AppLanguages defaultLanguage = languageList[0];
   static final List<AppLanguages> languageList = [
     AppLanguages(
       name: 'TR',
