@@ -111,7 +111,7 @@ class _BodyState extends BaseStateful<_Body, HeaderProvider> {
                       ),
                     ),
                     SizedBox(
-                      width: context.cXxLargeValue * 6,
+                      width: context.cXxLargeValue * 7,
                       child: MouseRegion(
                         onEnter: (_) => onEnter(2),
                         onExit: (_) => onExit(2),

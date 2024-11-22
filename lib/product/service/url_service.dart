@@ -36,7 +36,7 @@ class UrlServiceImpl extends UrlService {
   Future<void> launchMail() async {
     final emailUri = Uri(
       scheme: 'mailto',
-      path: 'tekurt43@gmail.com',
+      path: 'tekurt42@gmail.com',
     );
     if (await canLaunchUrl(emailUri)) {
       await launchUrl(emailUri);

@@ -22,7 +22,7 @@ class MainPage extends StatelessWidget {
       width: Responsive.getWidth(context),
       height: !isMobile
           ? ConstantSizes.largePageHeight.value
-          : ConstantSizes.largePageHeight.value + 100,
+          : ConstantSizes.largePageHeight.value + 150,
       child: Stack(
         children: [
           Positioned.fill(
@@ -50,7 +50,11 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                       Expanded(
-                        child: FadeInUp(child: const ContactFormWidget()),
+                        child: FadeInUp(
+                          child: const ContactFormWidget(
+                            isOnContactPage: false,
+                          ),
+                        ),
                       ),
                     ],
                   )
@@ -67,7 +71,11 @@ class MainPage extends StatelessWidget {
                       ),
                       Expanded(
                         flex: 40,
-                        child: FadeInRight(child: const ContactFormWidget()),
+                        child: FadeInRight(
+                          child: const ContactFormWidget(
+                            isOnContactPage: false,
+                          ),
+                        ),
                       ),
                     ],
                   ),

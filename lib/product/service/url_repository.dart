@@ -1,4 +1,4 @@
-import 'package:tekkom_web/product/services/url_service.dart';
+import 'package:tekkom_web/product/service/url_service.dart';
 
 class UrlRepository {
   final UrlService urlService;

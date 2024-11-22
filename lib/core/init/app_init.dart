@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:tekkom_web/config/localization/locale_constants.dart';
 import 'package:tekkom_web/feature/header/provider/header_provider.dart';
 import 'package:tekkom_web/main.dart';
-import 'package:tekkom_web/product/services/url_logic.dart';
-import 'package:tekkom_web/product/services/url_service.dart';
+import 'package:tekkom_web/product/service/url_repository.dart';
+import 'package:tekkom_web/product/service/url_service.dart';
 
 abstract class AppInit {
   Future<void> initialize();
@@ -22,7 +23,7 @@ class AppInitImpl extends AppInit {
         LocaleConstants.trLocale,
       ],
       path: LocaleConstants.localePath,
-      fallbackLocale: LocaleConstants.trLocale,
+      fallbackLocale: LocaleConstants.enLocale,
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(
@@ -40,6 +41,7 @@ class AppInitImpl extends AppInit {
 
   @override
   Future<void> initialize() async {
+    await dotenv.load();
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
   }

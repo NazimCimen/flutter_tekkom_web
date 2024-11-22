@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/feature/contact/widget/contact_form_widget.dart';
-import 'package:tekkom_web/product/services/contact_us_service.dart';
+import 'package:tekkom_web/product/model/mail_model.dart';
+import 'package:tekkom_web/product/service/email_repository.dart';
+import 'package:tekkom_web/product/service/email_service.dart';
 
 mixin ContactFromViewMixin on State<ContactFormWidget> {
   late final TextEditingController nameController;
@@ -9,7 +11,9 @@ mixin ContactFromViewMixin on State<ContactFormWidget> {
   late final TextEditingController msgController;
   late final AutovalidateMode validateMode;
   late final GlobalKey<FormState> formKey;
-  late final ContactUsService service;
+  late final EmailRepository repository;
+  late final EmailService service;
+
   String? feedbackMessage;
   bool isLoading = false;
   bool sendMailSucces = false;
@@ -21,7 +25,7 @@ mixin ContactFromViewMixin on State<ContactFormWidget> {
     msgController = TextEditingController();
     validateMode = AutovalidateMode.disabled;
     formKey = GlobalKey<FormState>();
-    service = ContactUsServiceImpl();
+    repository = EmailRepository(service: EmailServiceImpl());
     super.initState();
   }
 
@@ -47,10 +51,12 @@ mixin ContactFromViewMixin on State<ContactFormWidget> {
       });
     } else {
       changeLoading();
-      final result = await service.sendEmailMessage(
-        name: nameController.text,
-        msg: msgController.text,
-        mail: msgController.text,
+      final result = await repository.sendMailToService(
+        model: MailModel(
+          msg: msgController.text,
+          mail: mailController.text,
+          name: nameController.text,
+        ),
       );
       if (result) {
         feedbackMessage = StringConstants.form_succes_msg;

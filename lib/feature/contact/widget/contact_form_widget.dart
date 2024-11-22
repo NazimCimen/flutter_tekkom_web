@@ -10,7 +10,11 @@ import 'package:tekkom_web/product/widgets/custom_elevated_button.dart';
 import 'package:tekkom_web/product/widgets/custom_text_form_field.dart';
 
 class ContactFormWidget extends StatefulWidget {
-  const ContactFormWidget({super.key});
+  const ContactFormWidget({
+    required this.isOnContactPage,
+    super.key,
+  });
+  final bool isOnContactPage;
 
   @override
   State<ContactFormWidget> createState() => _ContactFormWidgetState();
@@ -23,7 +27,9 @@ class _ContactFormWidgetState
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: context.cPaddingxLarge,
+        padding: widget.isOnContactPage
+            ? context.pageHorizontolPadding(context)
+            : context.cPaddingxLarge,
         decoration: CustomBoxDecoration.customBoxDecoration(context),
         child: Form(
           autovalidateMode: validateMode,
@@ -38,20 +44,24 @@ class _ContactFormWidgetState
                     feedbackMessage!,
                     style: TextStyle(
                       color: sendMailSucces
-                          ? Theme.of(context).colorScheme.tertiaryContainer
+                          ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).colorScheme.secondaryContainer,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              SizedBox(height: context.cLargeValue),
+              SizedBox(
+                height: widget.isOnContactPage
+                    ? context.cXLargeValue * 2.5
+                    : context.cLargeValue,
+              ),
               SelectableText(
-                'İletişim Formu',
+                StringConstants.contact_info_form_button,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              SizedBox(height: context.cLargeValue),
+              SizedBox(height: context.cMediumValue),
               CustomTextFormField(
                 controller: nameController,
                 validator: (value) => AppValidators.nameValidator(value),
@@ -72,21 +82,25 @@ class _ContactFormWidgetState
                 controller: msgController,
                 validator: (value) => AppValidators.messageValidator(value),
                 hintText: StringConstants.form_msg_hint,
-                maxLines: 4,
+                maxLines: 6,
                 isMainSection: false,
               ),
               SizedBox(height: context.cLargeValue),
               SizedBox(
                 width: double.infinity,
                 child: CustomElevatedButtonWidget(
-                  text: 'MESAJINI İLET',
+                  text: StringConstants.contact_info_form_title,
                   isLoading: isLoading,
                   onPress: () async {
                     await sendMessageButton();
                   },
                 ),
               ),
-              SizedBox(height: context.cLargeValue),
+              SizedBox(
+                height: widget.isOnContactPage
+                    ? context.cXLargeValue * 2.5
+                    : context.cMediumValue,
+              ),
             ],
           ),
         ),

@@ -1,26 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
+import 'package:tekkom_web/product/constants/app_constants.dart';
 import 'package:tekkom_web/product/widgets/section_title_text_widget.dart';
+import 'package:tekkom_web/responsive/responsive.dart';
 
 class BrandCarousel extends StatelessWidget {
-  final List<String> brandLogos = [
-    'assets/images/car_audi.png',
-    'assets/images/car_bmw.png',
-    'assets/images/car_citroen.png',
-    'assets/images/car_ford.png',
-    'assets/images/car_honda.png',
-    'assets/images/car_kia.png',
-    'assets/images/car_land_rover.png',
-    'assets/images/car_mazda.png',
-    'assets/images/car_mercedes.png',
-    'assets/images/car_mitsubishi.png',
-    'assets/images/car_opel.png',
-    'assets/images/car_skoda.png',
-    'assets/images/car_volvo.png',
-  ];
+  const BrandCarousel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +17,18 @@ class BrandCarousel extends StatelessWidget {
       padding: context.cPaddingMedium,
       child: Column(
         children: [
-          SizedBox(height: context.cXxLargeValue * 1.5),
-          const CustomTitleTextMediumWidget(
-            text: 'Her Marka ve Model İçin Güvenilir Hizmet',
+          SizedBox(
+            height:
+                !Responsive.isMobile(context) ? context.cXxLargeValue * 1.5 : 0,
           ),
+          if (Responsive.isMobile(context))
+            const CustomTitleTextSmallWidget(
+              text: 'Her Marka ve Model İçin Güvenilir Hizmet',
+            ),
+          if (!Responsive.isMobile(context))
+            const CustomTitleTextMediumWidget(
+              text: 'Her Marka ve Model İçin Güvenilir Hizmet',
+            ),
           SizedBox(height: context.cMediumValue),
           SelectableText(
             textAlign: TextAlign.center,
@@ -44,13 +41,15 @@ class BrandCarousel extends StatelessWidget {
           SizedBox(height: context.cXLargeValue),
           CarouselSlider(
             options: CarouselOptions(
-              height: 150,
+              height: Responsive.isMobile(context)
+                  ? context.cLargeValue * 4
+                  : context.cXxLargeValue * 2,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 2),
               enlargeCenterPage: true,
               viewportFraction: 0.3,
             ),
-            items: brandLogos.map((logoPath) {
+            items: AppConstants.brandLogos.map((logoPath) {
               return Builder(
                 builder: (BuildContext context) {
                   return Card(
@@ -60,9 +59,11 @@ class BrandCarousel extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: context.cPaddingMedium,
-                      child: Image.asset(
+                      child: SvgPicture.asset(
                         logoPath,
-                        fit: BoxFit.contain,
+                        height: Responsive.isMobile(context)
+                            ? context.cLargeValue * 3
+                            : context.cXxLargeValue,
                       ),
                     ),
                   );

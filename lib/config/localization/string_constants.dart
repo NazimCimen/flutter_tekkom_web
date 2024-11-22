@@ -15,7 +15,19 @@ final class StringConstants {
   static String get our_services_small => 'our_services_small'.tr();
   static String get catalog_button => 'catalog_button'.tr();
   static String get about_us => 'about_us'.tr();
-  static String get about_us_small => 'about_us_small'.tr();
+  static String get about_us_description => 'about_us_description'.tr();
+  static String get about_us_title => 'about_us_title'.tr();
+  static String get about_us_content => 'about_us_content'.tr();
+  static String get footer_copyrights => 'footer_copyrights'.tr();
+  static String get footer_copyrights_dev => 'footer_copyrights_dev'.tr();
+  static String get footer_social_media => 'footer_social_media'.tr();
+  static String get footer_pages_title => 'footer_pages_title'.tr();
+  static String get our_services1 => 'our_services1'.tr();
+
+  static String get our_services2 => 'our_services2'.tr();
+
+  static String get our_services3 => 'our_services3'.tr();
+
   static String get mining_description1 => 'mining_description1'.tr();
   static String get mining_description2 => 'mining_description2'.tr();
   static String get mining_description3 => 'mining_description3'.tr();
@@ -26,9 +38,11 @@ final class StringConstants {
   static String get contact_us_description => 'contact_us_description'.tr();
   static String get contact_info_description => 'contact_info_description'.tr();
   static String get contact_info_adress => 'contact_info_adress'.tr();
-  static String get contact_info_phone => 'contact_info_phone'.tr();
-  static String get contact_info_mail => 'contact_info_mail'.tr();
+  static String get contact_info_phone => '+90 536 301 78 92';
+  static String get contact_info_mail => 'tekurt42@gmail.com';
   static String get contact_info_form_button => 'contact_info_form_button'.tr();
+  static String get contact_info_form_title => 'contact_info_form_title'.tr();
+  static String get contact_info_title => 'contact_info_title'.tr();
   static String get form_succes_msg => 'form_succes_msg'.tr();
   static String get form_fail_msg => 'form_fail_msg'.tr();
   static String get form_title => 'form_title'.tr();

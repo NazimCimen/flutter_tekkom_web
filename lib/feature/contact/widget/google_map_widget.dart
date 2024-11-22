@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 
 class GoogleMapWidget extends StatefulWidget {
@@ -22,26 +23,24 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
       onVerticalDragUpdate: (_) {},
       child: AbsorbPointer(
         absorbing: false,
-        child: Expanded(
-          child: Padding(
-            padding: context.cPaddingxLarge,
-            child: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: const CameraPosition(
-                target: _businessLocation,
-                zoom: 15,
-              ),
-              markers: {
-                const Marker(
-                  markerId: MarkerId('businessMarker'),
-                  position: _businessLocation,
-                  infoWindow: InfoWindow(
-                    title: 'Kartex Madencilik Ve Tekstil',
-                    snippet: '',
-                  ),
-                ),
-              },
+        child: Padding(
+          padding: context.cPaddingxLarge,
+          child: GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: const CameraPosition(
+              target: _businessLocation,
+              zoom: 15,
             ),
+            markers: {
+              Marker(
+                markerId: const MarkerId('businessMarker'),
+                position: _businessLocation,
+                infoWindow: InfoWindow(
+                  title: StringConstants.appName,
+                  snippet: '',
+                ),
+              ),
+            },
           ),
         ),
       ),

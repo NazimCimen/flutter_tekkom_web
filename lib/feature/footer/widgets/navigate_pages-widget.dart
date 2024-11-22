@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/config/routes/app_routes.dart';
 import 'package:tekkom_web/config/routes/navigator_service.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
@@ -13,7 +14,7 @@ class NavigatePagesWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Sayfalar',
+          StringConstants.footer_pages_title,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Theme.of(context).colorScheme.surface,
                 fontWeight: FontWeight.bold,
@@ -21,25 +22,25 @@ class NavigatePagesWidget extends StatelessWidget {
         ),
         SizedBox(height: context.cLowValue),
         FooterLink(
-          title: 'Anasayfa',
+          title: StringConstants.main_screen,
           onTap: () {
             NavigatorService.pushNamed(AppRoutes.homeView);
           },
         ),
         FooterLink(
-          title: 'Kurumsal',
+          title: StringConstants.about_us,
           onTap: () {
             NavigatorService.pushNamed(AppRoutes.aboutUsView);
           },
         ),
         FooterLink(
-          title: 'Hizmetlerimiz',
+          title: StringConstants.our_services,
           onTap: () {
             NavigatorService.pushNamed(AppRoutes.ourServicesView);
           },
         ),
         FooterLink(
-          title: 'İletişim',
+          title: StringConstants.contact_us,
           onTap: () {
             NavigatorService.pushNamed(AppRoutes.contactView);
           },
