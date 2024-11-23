@@ -18,7 +18,7 @@ final class LocaleConstants {
     ),
     AppLanguages(
       name: 'EN',
-      locale: trLocale,
+      locale: enLocale,
       flagPath: ImageEnumsPng.ic_flag_en.toPathPng,
     ),
   ];

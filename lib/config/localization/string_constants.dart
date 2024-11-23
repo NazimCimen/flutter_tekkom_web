@@ -22,18 +22,88 @@ final class StringConstants {
   static String get footer_copyrights_dev => 'footer_copyrights_dev'.tr();
   static String get footer_social_media => 'footer_social_media'.tr();
   static String get footer_pages_title => 'footer_pages_title'.tr();
+  static String get our_services_description => 'our_services_description'.tr();
+  static String get our_services_sub_description =>
+      'our_services_sub_description'.tr();
+
   static String get our_services1 => 'our_services1'.tr();
+  static String get our_services1_sub_desc => 'our_services1_sub_desc'.tr();
+
+  static String get our_services1_desc => 'our_services1_desc'.tr();
+  static String get our_services1_subtitle1 => 'our_services1_subtitle1'.tr();
+  static String get our_services1_subtitle2_desc1 =>
+      'our_services1_subtitle2_desc1'.tr();
+  static String get our_services1_subtitle2 => 'our_services1_subtitle2'.tr();
+  static String get our_services1_subtitle2_desc2 =>
+      'our_services1_subtitle2_desc2'.tr();
+  static String get our_services1_subtitle3 => 'our_services1_subtitle3'.tr();
+  static String get our_services1_subtitle2_desc3 =>
+      'our_services1_subtitle2_desc3'.tr();
+  static String get our_services1_subtitle4 => 'our_services1_subtitle4'.tr();
+  static String get our_services1_subtitle2_desc4 =>
+      'our_services1_subtitle2_desc4'.tr();
+  static String get our_services1_subtitle5 => 'our_services1_subtitle5'.tr();
+  static String get our_services1_subtitle2_desc5 =>
+      'our_services1_subtitle2_desc5'.tr();
+  static String get our_services1_subtitle6 => 'our_services1_subtitle6'.tr();
+  static String get our_services1_subtitle2_desc6 =>
+      'our_services1_subtitle2_desc6'.tr();
 
   static String get our_services2 => 'our_services2'.tr();
+  static String get our_services2_sub_desc => 'our_services2_sub_desc'.tr();
+  static String get our_services2_desc => 'our_services2_desc'.tr();
+  static String get our_services2_subtitle1 => 'our_services2_subtitle1'.tr();
+  static String get our_services2_subtitle2_desc1 =>
+      'our_services2_subtitle2_desc1'.tr();
+  static String get our_services2_subtitle2 => 'our_services2_subtitle2'.tr();
+  static String get our_services2_subtitle2_desc2 =>
+      'our_services2_subtitle2_desc2'.tr();
+  static String get our_services2_subtitle3 => 'our_services2_subtitle3'.tr();
+  static String get our_services2_subtitle2_desc3 =>
+      'our_services2_subtitle2_desc3'.tr();
+  static String get our_services2_subtitle4 => 'our_services2_subtitle4'.tr();
+  static String get our_services2_subtitle2_desc4 =>
+      'our_services2_subtitle2_desc4'.tr();
+  static String get our_services2_subtitle5 => 'our_services2_subtitle5'.tr();
+  static String get our_services2_subtitle2_desc5 =>
+      'our_services2_subtitle2_desc5'.tr();
+  static String get our_services2_subtitle6 => 'our_services2_subtitle6'.tr();
+  static String get our_services2_subtitle2_desc6 =>
+      'our_services2_subtitle2_desc6'.tr();
+  static String get our_services2_subtitle7 => 'our_services2_subtitle7'.tr();
+  static String get our_services2_subtitle2_desc7 =>
+      'our_services2_subtitle2_desc7'.tr();
 
   static String get our_services3 => 'our_services3'.tr();
+  static String get our_services3_sub_desc => 'our_services3_sub_desc'.tr();
 
-  static String get mining_description1 => 'mining_description1'.tr();
-  static String get mining_description2 => 'mining_description2'.tr();
-  static String get mining_description3 => 'mining_description3'.tr();
-  static String get texttile_description1 => 'texttile_description1'.tr();
-  static String get texttile_description2 => 'texttile_description2'.tr();
-  static String get texttile_description3 => 'texttile_description3'.tr();
+  static String get our_services3_desc => 'our_services3_desc'.tr();
+  static String get our_services3_subtitle1 => 'our_services3_subtitle1'.tr();
+  static String get our_services3_subtitle2_desc1 =>
+      'our_services3_subtitle2_desc1'.tr();
+  static String get our_services3_subtitle2 => 'our_services3_subtitle2'.tr();
+  static String get our_services3_subtitle3 => 'our_services3_subtitle3'.tr();
+  static String get our_services3_subtitle2_desc3 =>
+      'our_services3_subtitle2_desc3'.tr();
+  static String get our_services3_subtitle4 => 'our_services3_subtitle4'.tr();
+  static String get our_services3_subtitle2_desc4 =>
+      'our_services3_subtitle2_desc4'.tr();
+  static String get our_services3_subtitle5 => 'our_services3_subtitle5'.tr();
+  static String get our_services3_subtitle2_desc5 =>
+      'our_services3_subtitle2_desc5'.tr();
+  static String get our_services3_subtitle6 => 'our_services3_subtitle6'.tr();
+  static String get our_services3_subtitle2_desc6 =>
+      'our_services3_subtitle2_desc6'.tr();
+
+  static String get brand_slider_title => 'brand_slider_title'.tr();
+  static String get brand_slider_sub_title => 'brand_slider_sub_title'.tr();
+
+  static String get we_listen_title1 => 'we_listen_title1'.tr();
+  static String get we_listen_title2 => 'we_listen_title2'.tr();
+  static String get we_listen_sub_title => 'we_listen_sub_title'.tr();
+  static String get we_listen_sub_text1 => 'we_listen_sub_text1'.tr();
+  static String get we_listen_sub_text2 => 'we_listen_sub_text2'.tr();
+
   static String get contact_us_title => 'contact_us_title'.tr();
   static String get contact_us_description => 'contact_us_description'.tr();
   static String get contact_info_description => 'contact_info_description'.tr();
@@ -55,4 +125,5 @@ final class StringConstants {
   static String get emailValidateError2 => 'emailValidateError2'.tr();
   static String get msgValidateError => 'msgValidateError'.tr();
   static String get nameValidateError => 'nameValidateError'.tr();
+  static String get review => 'review'.tr();
 }

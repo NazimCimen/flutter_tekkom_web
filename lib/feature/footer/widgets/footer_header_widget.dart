@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
-import 'package:tekkom_web/responsive/responsive.dart';
 
 class FooterHeaderWidget extends StatelessWidget {
   const FooterHeaderWidget({super.key});
@@ -21,6 +19,7 @@ class FooterHeaderWidget extends StatelessWidget {
               ),
         ),
         SizedBox(height: context.cMediumValue),
+
         SelectableText(
           '${StringConstants.our_services1} / ${StringConstants.our_services2} / ${StringConstants.our_services3}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -28,7 +27,9 @@ class FooterHeaderWidget extends StatelessWidget {
               ),
         ),
         SizedBox(height: context.cMediumValue),
-        Row(
+
+        ///TO DO : This will implement later
+        /*       Row(
           children: [
             SelectableText(
               StringConstants.footer_social_media,
@@ -70,6 +71,7 @@ class FooterHeaderWidget extends StatelessWidget {
             ),
           ],
         ),
+     */
       ],
     );
   }

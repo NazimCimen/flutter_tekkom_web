@@ -7,8 +7,13 @@ import 'package:tekkom_web/config/localization/string_constants.dart';
 
 class HeaderDrawer extends StatelessWidget {
   final void Function(int) sectionNavButton;
+  final ScrollController scrollController;
 
-  const HeaderDrawer({required this.sectionNavButton, super.key});
+  const HeaderDrawer({
+    required this.sectionNavButton,
+    required this.scrollController,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,31 +24,34 @@ class HeaderDrawer extends StatelessWidget {
             iconData: Icons.home_outlined,
             text: StringConstants.main_screen,
             onTapSection: () {
-              NavigatorService.pushNamed(AppRoutes.ourServicesView);
+              NavigatorService.pushNamedAndRemoveUntil(AppRoutes.initialRoute);
+              scrollController.jumpTo(0);
             },
           ),
           _DrawerListTile(
             iconData: Icons.build_outlined,
             text: StringConstants.our_services,
             onTapSection: () {
-              NavigatorService.goBack();
-              NavigatorService.pushNamed(AppRoutes.ourServicesView);
+              NavigatorService.pushNamedAndRemoveUntil(
+                AppRoutes.ourServicesView,
+              );
+              scrollController.jumpTo(0);
             },
           ),
           _DrawerListTile(
             iconData: Icons.info_outline,
             text: StringConstants.about_us,
             onTapSection: () {
-              NavigatorService.goBack();
-              NavigatorService.pushNamed(AppRoutes.aboutUsView);
+              NavigatorService.pushNamedAndRemoveUntil(AppRoutes.aboutUsView);
+              scrollController.jumpTo(0);
             },
           ),
           _DrawerListTile(
             iconData: FontAwesomeIcons.envelope,
             text: StringConstants.contact_us,
             onTapSection: () {
-              NavigatorService.goBack();
-              NavigatorService.pushNamed(AppRoutes.contactView);
+              NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
+              scrollController.jumpTo(0);
             },
           ),
         ],

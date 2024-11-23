@@ -1,3 +1,4 @@
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/error/exception.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,7 +12,7 @@ abstract class UrlService {
 class UrlServiceImpl extends UrlService {
   @override
   Future<void> launchWhatsap() async {
-    const phone = '+905363017892';
+    final phone = StringConstants.contact_info_phone;
     final url = Uri.parse('https://wa.me/$phone');
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
@@ -36,7 +37,7 @@ class UrlServiceImpl extends UrlService {
   Future<void> launchMail() async {
     final emailUri = Uri(
       scheme: 'mailto',
-      path: 'tekurt42@gmail.com',
+      path: StringConstants.contact_info_mail,
     );
     if (await canLaunchUrl(emailUri)) {
       await launchUrl(emailUri);

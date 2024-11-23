@@ -6,13 +6,10 @@ import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/feature/base_ui/base_layout.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
-import 'package:tekkom_web/feature/footer/footer_widget_desktop.dart';
-import 'package:tekkom_web/feature/footer/footer_widget_mobile.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
 import 'package:tekkom_web/feature/our_services/widgets/our_services_widget.dart';
 import 'package:tekkom_web/product/widgets/section_background_widget.dart';
-import 'package:tekkom_web/responsive/responsive.dart';
 
 class AboutUsView extends StatefulWidget {
   const AboutUsView({super.key});
@@ -34,7 +31,7 @@ class _OurServicesViewState extends BaseLayout<AboutUsView> {
   Widget buildHeaderDesktop() {
     return HeaderDesktop(
       currentPage: AppRoutes.aboutUsView,
-      scrollController: scrollCont,
+      scrollController: scrollController,
     );
   }
 }
@@ -50,50 +47,38 @@ class _BodyContent extends BaseStateless<void> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: scrollController,
-      child: Column(
-        children: [
-          Column(
+    return Column(
+      children: [
+        SizedBox(
+          key: sectionKeys.first,
+        ),
+        SectionBackgroundWidget(
+          bgImagePath: ImageEnumsPng.bg_about.toPathPng,
+          title: StringConstants.about_us,
+          desc: StringConstants.about_us_description,
+        ),
+        SizedBox(height: context.cXxLargeValue),
+        Padding(
+          padding: context.pageHorizontolPadding(context),
+          child: Column(
             children: [
-              SizedBox(
-                key: sectionKeys.first,
-              ),
-              SectionBackgroundWidget(
-                bgImagePath: ImageEnumsPng.bg_about.toPathPng,
-                title: StringConstants.about_us,
-                desc: StringConstants.about_us_description,
-              ),
-              SizedBox(height: context.cXxLargeValue),
-              Padding(
-                padding: context.pageHorizontolPadding(context),
-                child: Column(
-                  children: [
-                    _title(context, StringConstants.about_us_title),
-                    SizedBox(height: context.cMediumValue),
-                    _description(
-                      context,
-                      StringConstants.about_us_content,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: context.cXLargeValue),
-              OurServicesSection(
-                scrollController: scrollController,
-              ),
-              SizedBox(height: context.cLargeValue),
-              const BrandCarousel(),
-              SizedBox(height: context.cXLargeValue),
-              const Responsive(
-                desktop: FooterWidgetDesktop(),
-                mobile: FooterWidgetMobile(),
-                tablet: FooterWidgetMobile(),
+              _title(context, StringConstants.about_us_title),
+              SizedBox(height: context.cMediumValue),
+              _description(
+                context,
+                StringConstants.about_us_content,
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        SizedBox(height: context.cXLargeValue),
+        OurServicesSection(
+          scrollController: scrollController,
+        ),
+        SizedBox(height: context.cLargeValue),
+        const BrandCarousel(),
+        SizedBox(height: context.cXLargeValue),
+      ],
     );
   }
 

@@ -6,7 +6,8 @@ import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/feature/footer/widgets/footer_link_widget.dart';
 
 class NavigateServicesWidget extends StatelessWidget {
-  const NavigateServicesWidget({super.key});
+  const NavigateServicesWidget({required this.scrollController, super.key});
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +25,26 @@ class NavigateServicesWidget extends StatelessWidget {
         FooterLink(
           title: StringConstants.our_services1,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.carReapierView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.carReapierView);
           },
         ),
         FooterLink(
           title: StringConstants.our_services2,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.fuelSavingView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(
+              AppRoutes.repairMachineryView,
+            );
           },
         ),
         FooterLink(
           title: StringConstants.our_services3,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.repairMachineryView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(
+              AppRoutes.fuelSavingView,
+            );
           },
         ),
         SizedBox(height: context.cMediumValue),

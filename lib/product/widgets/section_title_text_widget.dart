@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/responsive/responsive.dart';
 
 class CustomTitleTextLargeWidget extends StatelessWidget {
   final String text;
@@ -11,10 +12,15 @@ class CustomTitleTextLargeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectableText(
       text,
-      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontWeight: FontWeight.bold,
-          ),
+      style: Responsive.isMobile(context)
+          ? Theme.of(context).textTheme.displaySmall?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.bold,
+              )
+          : Theme.of(context).textTheme.displayMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.bold,
+              ),
     );
   }
 }
