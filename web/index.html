@@ -2,30 +2,54 @@
 <html>
 
 <head>
-
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description"
+    content="Araçlarınız ve iş makineleriniz için tamir ve bakım hizmetleri sunuyor, işletmenizin yakıt maliyetlerini azaltmaya yönelik yakıt tasarruf cihazları ile tasarruf sağlamanıza yardımcı oluyoruz.">
+  <meta name="keywords" content="oto tamir, tamir, araba tamiri,iş makineleri,bakım,yakıt tasarruf,kalite">
+  <meta name="author" content="Tekurt Endüstri ve Otomotiv">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Tekurt Endüstri ve Otomotiv">
+  <meta property="og:description"
+    content="Araçlarınız ve iş makineleriniz için tamir ve bakım hizmetleri sunuyor, işletmenizin yakıt maliyetlerini azaltmaya yönelik yakıt tasarruf cihazları ile tasarruf sağlamanıza yardımcı oluyoruz.">
+  <meta property="og:image" content="https://tekurt.com/assets/assets/images/logo.png">
+  <meta property="og:url" content="https://tekurt.com.tr">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tekurt Endüstri ve Otomotiv">
+  <meta name="twitter:description"
+    content="Araçlarınız ve iş makineleriniz için tamir ve bakım hizmetleri sunuyor, işletmenizin yakıt maliyetlerini azaltmaya yönelik yakıt tasarruf cihazları ile tasarruf sağlamanıza yardımcı oluyoruz.">
+  <meta name="twitter:image" content="https://tekurt.com.tr/assets/assets/images/logo.png">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="tekkom_web">
+  <meta name="apple-mobile-web-app-title" content="Tekurt Endüstri ve Otomotiv">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <title>tekkom_web</title>
+  <title>Tekurt Endüstri ve Otomotiv</title>
   <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
-  <script src="flutter_bootstrap.js" async></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC5Oux8c8jfnwFNFpYk0wt9zNGsC-JgD4"></script>
-
+  <script src="config.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const mapApiKey = window.env.MAP_KEY;
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${mapApiKey}`;
+      document.head.appendChild(script);
+    });
+  </script>
 </body>
 
 </html>

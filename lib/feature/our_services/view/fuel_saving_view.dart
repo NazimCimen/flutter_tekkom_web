@@ -61,8 +61,22 @@ class _BodyContent extends BaseStateless<void> {
           bgImagePath: ImageEnumsPng.img_services3.toPathPng,
         ),
         const _Body(),
+        Padding(
+          padding: context.pageHorizontolPadding(context),
+          child: _title(context, ''),
+        ),
         const BrandCarousel(),
       ],
+    );
+  }
+
+  SelectableText _title(BuildContext context, String text) {
+    return SelectableText(
+      text,
+      style: textTheme(context).headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            height: 2,
+          ),
     );
   }
 }
