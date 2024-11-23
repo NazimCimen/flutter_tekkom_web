@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/config/routes/app_routes.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/feature/base_ui/base_layout.dart';
-import 'package:tekkom_web/feature/footer/footer_widget_desktop.dart';
-import 'package:tekkom_web/feature/footer/footer_widget_mobile.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
 import 'package:tekkom_web/product/widgets/section_background_widget.dart';
-import 'package:tekkom_web/responsive/responsive.dart';
 
 class FuelSavingView extends StatefulWidget {
   const FuelSavingView({
@@ -51,33 +49,20 @@ class _BodyContent extends BaseStateless<void> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: scrollController,
-      child: Column(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                key: sectionKeys.first,
-              ),
-              SectionBackgroundWidget(
-                title: 'Yakıt Tasarrufu Cihazı',
-                desc:
-                    'Araçlarınızın yakıt verimliliğini artırarak, daha az yakıt tüketimi ve çevre dostu bir sürüş deneyimi sağlıyoruz.',
-                bgImagePath: ImageEnumsPng.img_services3.toPathPng,
-              ),
-              const _Body(),
-              BrandCarousel(),
-              const Responsive(
-                desktop: FooterWidgetDesktop(),
-                mobile: FooterWidgetMobile(),
-                tablet: FooterWidgetMobile(),
-              ),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          key: sectionKeys.first,
+        ),
+        SectionBackgroundWidget(
+          title: StringConstants.our_services3,
+          desc: StringConstants.our_services3_sub_desc,
+          bgImagePath: ImageEnumsPng.img_services3.toPathPng,
+        ),
+        const _Body(),
+        const BrandCarousel(),
+      ],
     );
   }
 }
@@ -93,45 +78,57 @@ class _Body extends BaseStateless<void> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: context.cXLargeValue),
-          _title(context, 'Yakıt Tasarrufu Cihazı'),
-          _description(
+          _title(
             context,
-            'Günümüzde, artan yakıt maliyetleri ve çevresel kaygılar, araç sahiplerini ve işletmeleri daha verimli çözümler aramaya itmektedir. Firmamız, yakıt tasarrufu sağlamak için geliştirdiği özel cihazlar ile hem ekonomik hem de çevresel faydalar sunmaktadır. Yakıt tasarrufu cihazlarımız, motor performansını artırarak yakıt tüketimini azaltır ve çevreye duyarlı bir sürüş deneyimi sunar.',
+            StringConstants.our_services3,
           ),
-          _title(context, 'Yakıt Tasarrufu Cihazı Neden Önemlidir?'),
           _description(
             context,
-            'Yüksek yakıt tüketimi, hem bireysel araç sahipleri hem de ticari işletmeler için ciddi bir maliyet kaynağıdır. Yakıt tasarrufu cihazları, araçların daha verimli çalışmasını sağlayarak, uzun vadede yakıt giderlerini önemli ölçüde düşürür. Bunun yanı sıra, çevre dostu bir yaklaşım benimseyen bu cihazlar, karbon salınımını da azaltır, böylece sürdürülebilir bir gelecek için katkı sağlar.',
+            StringConstants.our_services3_desc,
           ),
           _title(
             context,
-            'Yakıt Tasarrufu Cihazı Kullanmanın Avantajları',
+            StringConstants.our_services3_subtitle1,
           ),
-          _subTitle(context, 'Düşük İşletme Maliyetleri:'),
           _description(
             context,
-            'Azalan yakıt tüketimi, işletme giderlerinizi düşürür ve kâr marjınızı artırır.',
+            StringConstants.our_services3_subtitle2_desc1,
           ),
-          _subTitle(context, 'Daha Az Karbon Salınımı: '),
-          _description(
+          _title(
             context,
-            'Cihaz, çevre dostu bir çözüm sunarak emisyonları azaltır ve daha temiz bir çevre için katkıda bulunur.',
+            StringConstants.our_services3_subtitle2,
           ),
           _subTitle(
             context,
-            'Hızlı Yatırım Getirisi:',
+            StringConstants.our_services3_subtitle3,
           ),
           _description(
             context,
-            'Düşük maliyetli bir yatırımla, yakıt tasarrufu cihazı kısa süre içinde kendisini amorti eder ve uzun vadeli tasarruflar sağlar.',
+            StringConstants.our_services3_subtitle2_desc3,
+          ),
+          _subTitle(
+            context,
+            StringConstants.our_services3_subtitle4,
+          ),
+          _description(
+            context,
+            StringConstants.our_services3_subtitle2_desc4,
+          ),
+          _subTitle(
+            context,
+            StringConstants.our_services3_subtitle5,
+          ),
+          _description(
+            context,
+            StringConstants.our_services3_subtitle2_desc5,
           ),
           _title(
             context,
-            'Sürdürülebilir Bir Gelecek İçin Yakıt Tasarrufu',
+            StringConstants.our_services3_subtitle6,
           ),
           _description(
             context,
-            'Yakıt tasarrufu cihazlarımız, sadece araç sahiplerinin değil, çevrenin de dostudur. Firmamız, çevreye duyarlı, verimli ve ekonomik çözümler sunarak hem bireysel kullanıcılar hem de ticari araç işletmeleri için sürdürülebilir bir gelecek inşa etmeyi hedeflemektedir.Hemen yakıt tasarrufu cihazımızı edinin ve sürüşünüzü daha verimli hale getirin!',
+            StringConstants.our_services3_subtitle2_desc6,
           ),
           SizedBox(height: context.cMediumValue),
         ],

@@ -3,12 +3,13 @@ import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/feature/footer/widgets/copyright_widget.dart';
 import 'package:tekkom_web/feature/footer/widgets/footer_header_widget.dart';
-import 'package:tekkom_web/feature/footer/widgets/navigate_pages-widget.dart';
+import 'package:tekkom_web/feature/footer/widgets/navigate_pages_widget.dart';
 import 'package:tekkom_web/feature/footer/widgets/navigate_services_widget.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
 class FooterWidgetMobile extends StatelessWidget {
-  const FooterWidgetMobile({super.key});
+  const FooterWidgetMobile({required this.scrollController, super.key});
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,16 @@ class FooterWidgetMobile extends StatelessWidget {
           if (!Responsive.isMobile(context))
             Divider(color: Theme.of(context).colorScheme.outline),
           if (!Responsive.isMobile(context))
-            const Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                NavigatePagesWidget(),
-                Spacer(),
-                NavigateServicesWidget(),
+                NavigatePagesWidget(
+                  scrollController: scrollController,
+                ),
+                const Spacer(),
+                NavigateServicesWidget(
+                  scrollController: scrollController,
+                ),
               ],
             ),
           Divider(color: Theme.of(context).colorScheme.outline),

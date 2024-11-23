@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
@@ -22,17 +23,17 @@ class BrandCarousel extends StatelessWidget {
                 !Responsive.isMobile(context) ? context.cXxLargeValue * 1.5 : 0,
           ),
           if (Responsive.isMobile(context))
-            const CustomTitleTextSmallWidget(
-              text: 'Her Marka ve Model İçin Güvenilir Hizmet',
+            CustomTitleTextSmallWidget(
+              text: StringConstants.brand_slider_title,
             ),
           if (!Responsive.isMobile(context))
-            const CustomTitleTextMediumWidget(
-              text: 'Her Marka ve Model İçin Güvenilir Hizmet',
+            CustomTitleTextMediumWidget(
+              text: StringConstants.brand_slider_title,
             ),
           SizedBox(height: context.cMediumValue),
           SelectableText(
             textAlign: TextAlign.center,
-            'Her Marka ve Modeldeki Araçlarınızın Tamirini ve Bakımını Yapıyoruz.',
+            StringConstants.brand_slider_sub_title,
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium

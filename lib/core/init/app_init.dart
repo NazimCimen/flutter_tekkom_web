@@ -23,7 +23,7 @@ class AppInitImpl extends AppInit {
         LocaleConstants.trLocale,
       ],
       path: LocaleConstants.localePath,
-      fallbackLocale: LocaleConstants.enLocale,
+      fallbackLocale: LocaleConstants.trLocale,
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(

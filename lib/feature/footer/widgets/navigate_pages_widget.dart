@@ -6,7 +6,11 @@ import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/feature/footer/widgets/footer_link_widget.dart';
 
 class NavigatePagesWidget extends StatelessWidget {
-  const NavigatePagesWidget({super.key});
+  const NavigatePagesWidget({
+    required this.scrollController,
+    super.key,
+  });
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +28,29 @@ class NavigatePagesWidget extends StatelessWidget {
         FooterLink(
           title: StringConstants.main_screen,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.homeView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.initialRoute);
           },
         ),
         FooterLink(
           title: StringConstants.about_us,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.aboutUsView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.aboutUsView);
           },
         ),
         FooterLink(
           title: StringConstants.our_services,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.ourServicesView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.ourServicesView);
           },
         ),
         FooterLink(
           title: StringConstants.contact_us,
           onTap: () {
-            NavigatorService.pushNamed(AppRoutes.contactView);
+            scrollController.jumpTo(0);
+            NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
           },
         ),
         SizedBox(height: context.cMediumValue),

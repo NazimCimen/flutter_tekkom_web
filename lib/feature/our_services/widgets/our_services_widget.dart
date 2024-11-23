@@ -25,108 +25,116 @@ class OurServicesSection extends BaseStateless<void> {
     final isDesktop = Responsive.isDesktop(context);
     return SizedBox(
       width: Responsive.getWidth(context),
-      child: Column(
-        children: [
-          SizedBox(height: context.cXxLargeValue * 1.5),
-          CustomTitleTextLargeWidget(
-            text: StringConstants.our_services_small,
-          ),
-          SizedBox(height: context.cLowValue),
-          SelectableText(
-            textAlign: TextAlign.center,
-            'Araç ve iş makineleri tamirinde uzman ekibimizle güvenilir hizmet sunarken, \nyakıt tasarruf cihazlarımızla da verimliliğinizi artırıyoruz.',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onTertiary,
-                  fontStyle: FontStyle.italic,
-                ),
-          ),
-          SizedBox(height: context.cXLargeValue),
-          if (isDesktop)
-            Padding(
-              padding: context.pageHorizontolPadding(context),
-              child: Row(
+      child: Padding(
+        padding: context.pageHorizontolPadding(context),
+        child: Column(
+          children: [
+            SizedBox(height: context.cXxLargeValue * 1.5),
+            CustomTitleTextLargeWidget(
+              text: StringConstants.our_services_small,
+            ),
+            SizedBox(height: context.cLowValue),
+            SelectableText(
+              textAlign: TextAlign.center,
+              StringConstants.our_services_description,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onTertiary,
+                    fontStyle: FontStyle.italic,
+                  ),
+            ),
+            SizedBox(height: context.cXLargeValue),
+            if (isDesktop)
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
-                    child: _HoverContainer(
+                    child: Padding(
+                      padding: context.cPaddingSmall,
+                      child: _HoverContainer(
+                        imagePath: ImageEnumsPng.img_services1.toPathPng,
+                        title: StringConstants.our_services1,
+                        scrollController: scrollController,
+                        route: AppRoutes.carReapierView,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: context.cPaddingSmall,
+                      child: _HoverContainer(
+                        imagePath: ImageEnumsPng.img_services2.toPathPng,
+                        title: StringConstants.our_services2,
+                        scrollController: scrollController,
+                        route: AppRoutes.repairMachineryView,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: context.cPaddingSmall,
+                      child: _HoverContainer(
+                        imagePath: ImageEnumsPng.img_services3.toPathPng,
+                        scrollController: scrollController,
+                        title: StringConstants.our_services3,
+                        route: AppRoutes.fuelSavingView,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            if (!isDesktop)
+              Padding(
+                padding: context.cPaddingLarge,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _HoverContainer(
                       imagePath: ImageEnumsPng.img_services1.toPathPng,
-                      title: 'Araç Tamir Ve Bakımı',
+                      title: StringConstants.our_services1,
                       scrollController: scrollController,
                       route: AppRoutes.carReapierView,
                     ),
-                  ),
-                  Flexible(
-                    child: _HoverContainer(
+                    SizedBox(height: context.cLargeValue),
+                    _HoverContainer(
                       imagePath: ImageEnumsPng.img_services2.toPathPng,
-                      title: 'İş Makineleri Tamir Ve Bakımı',
+                      title: StringConstants.our_services2,
                       scrollController: scrollController,
                       route: AppRoutes.repairMachineryView,
                     ),
-                  ),
-                  Flexible(
-                    child: _HoverContainer(
+                    SizedBox(height: context.cLargeValue),
+                    _HoverContainer(
                       imagePath: ImageEnumsPng.img_services3.toPathPng,
+                      title: StringConstants.our_services3,
                       scrollController: scrollController,
-                      title: 'Yakıt Tasarruf Cihazı',
                       route: AppRoutes.fuelSavingView,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          if (!isDesktop)
+            SizedBox(height: context.cXLargeValue),
             Padding(
-              padding: context.cPaddingLarge,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _HoverContainer(
-                    imagePath: ImageEnumsPng.img_services1.toPathPng,
-                    title: 'Araç Tamir Ve Bakımı',
-                    scrollController: scrollController,
-                    route: AppRoutes.carReapierView,
-                  ),
-                  SizedBox(height: context.cLargeValue),
-                  _HoverContainer(
-                    imagePath: ImageEnumsPng.img_services2.toPathPng,
-                    title: 'İş Makineleri Tamir Ve Bakımı',
-                    scrollController: scrollController,
-                    route: AppRoutes.repairMachineryView,
-                  ),
-                  SizedBox(height: context.cLargeValue),
-                  _HoverContainer(
-                    imagePath: ImageEnumsPng.img_services3.toPathPng,
-                    title: 'Yakıt Tasarruf Cihazı',
-                    scrollController: scrollController,
-                    route: AppRoutes.fuelSavingView,
-                  ),
-                ],
+              padding: context.cPaddingMedium,
+              child: SelectableText(
+                textAlign: TextAlign.center,
+                StringConstants.our_services_sub_description,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontStyle: FontStyle.italic,
+                      color: Theme.of(context).colorScheme.onTertiary,
+                    ),
               ),
             ),
-          SizedBox(height: context.cXLargeValue),
-          Padding(
-            padding: context.cPaddingMedium,
-            child: SelectableText(
-              textAlign: TextAlign.center,
-              'Hizmetlerimizle işlerinizi kolaylaştırmak ve güvenilir çözümler sunmak için buradayız. '
-              'Daha fazla bilgi için bizimle iletişime geçebilirsiniz.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontStyle: FontStyle.italic,
-                    color: Theme.of(context).colorScheme.onTertiary,
-                  ),
+            SizedBox(height: context.cLowValue),
+            CustomElevatedButtonWidget(
+              isLoading: false,
+              text: StringConstants.contact_us,
+              onPress: () {
+                NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
+              },
             ),
-          ),
-          SizedBox(height: context.cLowValue),
-          CustomElevatedButtonWidget(
-            isLoading: false,
-            text: 'BİZE ULAŞIN',
-            onPress: () {
-              NavigatorService.pushNamedAndRemoveUntil(AppRoutes.contactView);
-            },
-          ),
-          SizedBox(height: context.cXxLargeValue * 1.5),
-        ],
+            SizedBox(height: context.cXxLargeValue * 1.5),
+          ],
+        ),
       ),
     );
   }
@@ -230,7 +238,7 @@ class _HoverContainerState
                         );
                       },
                       child: Text(
-                        'İncele',
+                        StringConstants.review,
                         style: textTheme.bodyMedium
                             ?.copyWith(color: colorScheme.surface),
                       ),

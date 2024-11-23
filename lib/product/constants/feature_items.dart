@@ -5,28 +5,28 @@ import 'package:tekkom_web/config/routes/app_routes.dart';
 @immutable
 final class FeatureItems {
   const FeatureItems._();
-  static List<FeatureItem> drawerItems = [
-    FeatureItem(
-      icon: Icons.home_outlined,
-      text: StringConstants.main_screen,
-      route: AppRoutes.initialRoute,
-    ),
-    FeatureItem(
-      icon: Icons.star_outline,
-      text: StringConstants.our_services,
-      route: AppRoutes.ourServicesView,
-    ),
-    FeatureItem(
-      icon: Icons.sentiment_satisfied_outlined,
-      text: StringConstants.about_us,
-      route: AppRoutes.aboutUsView,
-    ),
-    FeatureItem(
-      icon: Icons.app_shortcut_outlined,
-      text: StringConstants.contact_us,
-      route: AppRoutes.contactView,
-    ),
-  ];
+  static List<FeatureItem> get drawerItems => [
+        FeatureItem(
+          icon: Icons.home_outlined,
+          text: StringConstants.main_screen,
+          route: AppRoutes.initialRoute,
+        ),
+        FeatureItem(
+          icon: Icons.star_outline,
+          text: StringConstants.our_services,
+          route: AppRoutes.ourServicesView,
+        ),
+        FeatureItem(
+          icon: Icons.sentiment_satisfied_outlined,
+          text: StringConstants.about_us,
+          route: AppRoutes.aboutUsView,
+        ),
+        FeatureItem(
+          icon: Icons.app_shortcut_outlined,
+          text: StringConstants.contact_us,
+          route: AppRoutes.contactView,
+        ),
+      ];
 }
 
 @immutable

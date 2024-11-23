@@ -14,8 +14,9 @@ mixin HomeViewMixin on State<HomeView> {
 
   @override
   void dispose() {
-    scrollController.removeListener(_scrollListener);
-    scrollController.dispose();
+    scrollController
+      ..removeListener(_scrollListener)
+      ..dispose();
     super.dispose();
   }
 

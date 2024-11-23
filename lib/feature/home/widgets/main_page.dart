@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
@@ -20,9 +20,11 @@ class MainPage extends StatelessWidget {
 
     return SizedBox(
       width: Responsive.getWidth(context),
-      height: !isMobile
-          ? ConstantSizes.largePageHeight.value
-          : ConstantSizes.largePageHeight.value + 150,
+      height: isDesktop
+          ? ConstantSizes.largePageHeight.value + 100
+          : isMobile
+              ? ConstantSizes.largePageHeight.value + 150
+              : ConstantSizes.largePageHeight.value + 120,
       child: Stack(
         children: [
           Positioned.fill(
@@ -41,19 +43,14 @@ class MainPage extends StatelessWidget {
             child: !isDesktop
                 ? Column(
                     children: [
-                      Flexible(
-                        child: FadeInUp(
-                          child: _HomeInfoWidget(
-                            isMobile: isMobile,
-                            isDesktop: isDesktop,
-                          ),
-                        ),
+                      SizedBox(height: context.cMediumValue * 6),
+                      FadeInUp(
+                        child: const _HomeInfoWidget(),
                       ),
-                      Expanded(
-                        child: FadeInUp(
-                          child: const ContactFormWidget(
-                            isOnContactPage: false,
-                          ),
+                      SizedBox(height: context.cMediumValue),
+                      FadeInUp(
+                        child: const ContactFormWidget(
+                          isOnContactPage: false,
                         ),
                       ),
                     ],
@@ -63,10 +60,7 @@ class MainPage extends StatelessWidget {
                       Flexible(
                         flex: 60,
                         child: FadeInLeft(
-                          child: _HomeInfoWidget(
-                            isMobile: isMobile,
-                            isDesktop: isDesktop,
-                          ),
+                          child: const _HomeInfoWidget(),
                         ),
                       ),
                       Expanded(
@@ -86,59 +80,38 @@ class MainPage extends StatelessWidget {
   }
 }
 
-class _HomeInfoWidget extends StatelessWidget {
-  const _HomeInfoWidget({
-    required this.isMobile,
-    required this.isDesktop,
-  });
-
-  final bool isMobile;
-  final bool isDesktop;
+class _HomeInfoWidget extends BaseStateless<void> {
+  const _HomeInfoWidget();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: context.cMediumValue),
+      padding: Responsive.isDesktop(context)
+          ? EdgeInsets.only(right: context.cMediumValue)
+          : EdgeInsets.zero,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (isDesktop) SizedBox(height: context.cLargeValue * 10),
           Align(
             child: Image.asset(
               ImageEnumsPng.logo.toPathPng,
-              width: isMobile
-                  ? context.cXxLargeValue * 5
-                  : isDesktop
-                      ? context.cXxLargeValue * 7
-                      : context.cXxLargeValue * 4,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: ConstantSizes.xLarge.value * 2),
-          if (!isDesktop)
-            Flexible(
-              child: SelectableText(
-                StringConstants.main_screen_description.tr(),
-                maxLines: 5,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          SizedBox(height: context.cMediumValue),
+          SelectableText(
+            StringConstants.main_screen_description,
+            style: Responsive.isMobile(context)
+                ? Theme.of(context).textTheme.titleMedium?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+                      color: Theme.of(context).colorScheme.surface,
+                    )
+                : Theme.of(context).textTheme.titleLarge?.copyWith(
                       overflow: TextOverflow.ellipsis,
                       color: Theme.of(context).colorScheme.surface,
                     ),
-              ),
-            ),
-          if (isDesktop)
-            Flexible(
-              child: SelectableText(
-                StringConstants.main_screen_description,
-                maxLines: 15,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      overflow: TextOverflow.ellipsis,
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-              ),
-            ),
-          SizedBox(height: context.cXxLargeValue),
+          ),
         ],
       ),
     );

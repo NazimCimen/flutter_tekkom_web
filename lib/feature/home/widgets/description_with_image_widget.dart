@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
@@ -60,7 +61,7 @@ class _Description extends BaseStateless<void> {
               TextSpan(
                 children: [
                   TextSpan(
-                    text: 'SİZİ ',
+                    text: '${StringConstants.we_listen_title1} ',
                     style: textTheme(context).displayMedium?.copyWith(
                           color: colorScheme(context).primary,
                           fontWeight: FontWeight.bold,
@@ -68,7 +69,7 @@ class _Description extends BaseStateless<void> {
                         ),
                   ),
                   TextSpan(
-                    text: 'DİNLİYORUZ',
+                    text: StringConstants.we_listen_title2,
                     style: textTheme(context).displayMedium?.copyWith(
                           color: colorScheme(context).surface,
                           fontWeight: FontWeight.bold,
@@ -80,26 +81,38 @@ class _Description extends BaseStateless<void> {
             ),
             SelectableText(
               textAlign: TextAlign.center,
-              'Her türlü çözüm önerileri sunuyoruz',
-              style: textTheme(context).bodyMedium?.copyWith(
-                    color: colorScheme(context).surface,
-                  ),
+              StringConstants.we_listen_sub_title,
+              style: !Responsive.isMobile(context)
+                  ? textTheme(context).bodyMedium?.copyWith(
+                        color: colorScheme(context).surface,
+                      )
+                  : textTheme(context).bodySmall?.copyWith(
+                        color: colorScheme(context).surface,
+                      ),
             ),
             SizedBox(height: context.cXLargeValue),
             SelectableText(
               textAlign: TextAlign.center,
-              'Sizlere anında hizmet üretiyoruz. Kaliteli ekipmanımız ve işinde uzman çalışanlarımızla sizlere dört dörtlük hizmet sunuyoruz.',
-              style: textTheme(context).bodyLarge?.copyWith(
-                    color: colorScheme(context).surface,
-                  ),
+              StringConstants.we_listen_sub_text1,
+              style: !Responsive.isMobile(context)
+                  ? textTheme(context).bodyLarge?.copyWith(
+                        color: colorScheme(context).surface,
+                      )
+                  : textTheme(context).bodyMedium?.copyWith(
+                        color: colorScheme(context).surface,
+                      ),
             ),
             SizedBox(height: context.cLargeValue),
             SelectableText(
               textAlign: TextAlign.center,
-              'Belirttiğiniz sorunları, ürün ve hizmetleri önce sizden dinliyor sonra, üstün kalite ile araç bakım hizmetlerini sizlere sunuyoruz.',
-              style: textTheme(context).bodyLarge?.copyWith(
-                    color: colorScheme(context).surface,
-                  ),
+              StringConstants.we_listen_sub_text2,
+              style: !Responsive.isMobile(context)
+                  ? textTheme(context).bodyLarge?.copyWith(
+                        color: colorScheme(context).surface,
+                      )
+                  : textTheme(context).bodyMedium?.copyWith(
+                        color: colorScheme(context).surface,
+                      ),
             ),
           ],
         ),

@@ -29,7 +29,7 @@ class _ContactFormWidgetState
       child: Container(
         padding: widget.isOnContactPage
             ? context.pageHorizontolPadding(context)
-            : context.cPaddingxLarge,
+            : context.cPaddingLarge,
         decoration: CustomBoxDecoration.customBoxDecoration(context),
         child: Form(
           autovalidateMode: validateMode,
@@ -56,7 +56,7 @@ class _ContactFormWidgetState
                     : context.cLargeValue,
               ),
               SelectableText(
-                StringConstants.contact_info_form_button,
+                StringConstants.contact_info_form_title,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -89,7 +89,7 @@ class _ContactFormWidgetState
               SizedBox(
                 width: double.infinity,
                 child: CustomElevatedButtonWidget(
-                  text: StringConstants.contact_info_form_title,
+                  text: StringConstants.contact_info_form_button,
                   isLoading: isLoading,
                   onPress: () async {
                     await sendMessageButton();

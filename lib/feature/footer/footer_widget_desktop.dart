@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/feature/footer/widgets/copyright_widget.dart';
 import 'package:tekkom_web/feature/footer/widgets/footer_header_widget.dart';
-import 'package:tekkom_web/feature/footer/widgets/navigate_pages-widget.dart';
+import 'package:tekkom_web/feature/footer/widgets/navigate_pages_widget.dart';
 import 'package:tekkom_web/feature/footer/widgets/navigate_services_widget.dart';
 
 class FooterWidgetDesktop extends StatelessWidget {
-  const FooterWidgetDesktop({super.key});
+  const FooterWidgetDesktop({required this.scrollController, super.key});
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +17,20 @@ class FooterWidgetDesktop extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(),
-              FooterHeaderWidget(),
-              Spacer(),
-              NavigatePagesWidget(),
-              Spacer(),
-              NavigateServicesWidget(),
-              Spacer(),
+              const Spacer(),
+              const FooterHeaderWidget(),
+              const Spacer(),
+              NavigatePagesWidget(
+                scrollController: scrollController,
+              ),
+              const Spacer(),
+              NavigateServicesWidget(
+                scrollController: scrollController,
+              ),
+              const Spacer(),
             ],
           ),
           Divider(color: Theme.of(context).colorScheme.outline),
