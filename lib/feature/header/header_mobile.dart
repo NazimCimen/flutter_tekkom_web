@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
@@ -18,7 +17,7 @@ class HeaderMobile extends StatelessWidget {
       builder:
           (BuildContext context, HeaderProvider controller, Widget? child) {
         if (controller.errorMsg != null) {
-          SchedulerBinding.instance.addPostFrameCallback(
+          WidgetsBinding.instance.addPostFrameCallback(
             (_) {
               CustomSnackBars.showErrorSnackbar(context, controller.errorMsg!);
               controller.snackBarDuration();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/config/routes/app_routes.dart';
 import 'package:tekkom_web/core/base/base_stateless.dart';
+import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/feature/base_ui/base_layout.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
@@ -58,8 +59,22 @@ class _BodyContent extends BaseStateless<void> {
         OurServicesSection(
           scrollController: scrollController,
         ),
+        Padding(
+          padding: context.pageHorizontolPadding(context),
+          child: _title(context, ''),
+        ),
         SizedBox(height: context.cXxLargeValue),
       ],
+    );
+  }
+
+  SelectableText _title(BuildContext context, String text) {
+    return SelectableText(
+      text,
+      style: textTheme(context).headlineMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            height: 2,
+          ),
     );
   }
 }

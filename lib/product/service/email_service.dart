@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:tekkom_web/product/env.config.dart';
 import 'package:tekkom_web/product/model/mail_model.dart';
 
 abstract class EmailService {
@@ -21,9 +21,9 @@ class EmailServiceImpl extends EmailService {
         },
         body: json.encode(
           {
-            'service_id': dotenv.env['SERVICE_ID'],
-            'template_id': dotenv.env['TEMPLATE_ID'],
-            'user_id': dotenv.env['USER_ID'],
+            'service_id': EnvConfig.serviceId,
+            'template_id': EnvConfig.templateId,
+            'user_id': EnvConfig.userId,
             'template_params': {
               'from_name': model.name,
               'message': model.msg,

@@ -1,11 +1,11 @@
 {
-    "name": "tekkom_web",
-    "short_name": "tekkom_web",
+    "name": "Tekurt Endüstri ve Otomotiv",
+    "short_name": "Tekurt Endüstri ve Otomotiv",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Araçlarınız ve iş makineleriniz için tamir ve bakım hizmetleri sunuyor, işletmenizin yakıt maliyetlerini azaltmaya yönelik yakıt tasarruf cihazları ile tasarruf sağlamanıza yardımcı oluyoruz.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

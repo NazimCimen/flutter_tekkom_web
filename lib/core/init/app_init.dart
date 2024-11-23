@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:tekkom_web/config/localization/locale_constants.dart';
 import 'package:tekkom_web/feature/header/provider/header_provider.dart';
@@ -41,7 +40,6 @@ class AppInitImpl extends AppInit {
 
   @override
   Future<void> initialize() async {
-    await dotenv.load();
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
   }

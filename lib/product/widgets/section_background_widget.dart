@@ -14,6 +14,7 @@ class SectionBackgroundWidget extends StatelessWidget {
   final String title;
   final String desc;
   final String bgImagePath;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
