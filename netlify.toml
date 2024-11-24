@@ -1,3 +1,6 @@
 [build]
-  command = "node write-env-to-file.js && flutter build web"
   publish = "build/web"
+  command = "flutter build web && npx replace-env"
+
+[functions]
+  node_bundler = "esbuild"

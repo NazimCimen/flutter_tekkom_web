@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 
 <head>
   <base href="$FLUTTER_BASE_HREF">
@@ -38,18 +38,17 @@
 
   <title>Tekurt Endüstri ve Otomotiv</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    const googleMapsApiKey = "{{MAPS_API_KEY}}"; 
+  </script>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC5Oux8c8jfnwFNFpYk0wt9zNGsC-JgD4"></script>
 </head>
 
 <body>
-  <script src="config.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const mapApiKey = window.env.MAP_KEY;
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${mapApiKey}`;
-      document.head.appendChild(script);
-    });
-  </script>
+  <script src="main.dart.js" defer></script>
 </body>
 
 </html>

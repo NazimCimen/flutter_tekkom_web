@@ -45,3 +45,6 @@ app.*.map.json
 /assets/.env
 /web/config.js
 /build/
+
+# Local Netlify folder
+.netlify
