@@ -37,8 +37,7 @@ You can view the official website at [www.tekurt.com.tr](https://www.tekurt.com.
 - **url_launcher**: Used to launch URLs.
 - **carousel_slider**: Used to create image carousels on the website.
 
-
-# Shared Page Structure and Project Architecture: Base Layout and Layers
+## Directory Structure
 ```plaintext
 lib/
 ├── config/                 # Configuration files and utilities for application setup.
@@ -72,6 +71,7 @@ lib/
 └── main.dart               # Application entry point and initial setup.
 ```
 
+# Shared Page Structure and Project Architecture: Base Layout and Layers
 ## Overview
 
 This project leverages a unified structure for key pages such as **HomeView**, **OurServices**, **AboutUs**, **CarRepair**,**ReapirMachinery**,**FuelSaving** and **ContactUs**. These pages share consistent design elements and behaviors, including:
