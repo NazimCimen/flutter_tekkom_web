@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/feature/contact/widget/contact_form_widget.dart';
 import 'package:tekkom_web/product/model/mail_model.dart';
-import 'package:tekkom_web/product/service/email_repository.dart';
+import 'package:tekkom_web/product/repository/email_repository.dart';
 import 'package:tekkom_web/product/service/email_service.dart';
 
 mixin ContactFromViewMixin on State<ContactFormWidget> {
