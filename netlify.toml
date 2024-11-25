@@ -1,6 +1,13 @@
 [build]
   publish = "build/web"
-  command = "flutter build web && npx replace-env"
+  command = "flutter build web"
 
-[functions]
-  node_bundler = "esbuild"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  SERVICE_ID = "service_m9u64hl"
+  TEMPLATE_ID = "template_6tylfoq"
+  USER_ID = "Dht4gdG2x81QTQ4ma"

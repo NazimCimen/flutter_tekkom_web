@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tekkom_web/product/constants/app_durations.dart';
-import 'package:tekkom_web/product/service/url_repository.dart';
+import 'package:tekkom_web/product/repository/url_repository.dart';
 
 class HeaderProvider extends ChangeNotifier {
   final UrlRepository urlRepository;

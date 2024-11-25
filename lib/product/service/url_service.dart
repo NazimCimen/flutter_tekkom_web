@@ -12,7 +12,7 @@ abstract class UrlService {
 class UrlServiceImpl extends UrlService {
   @override
   Future<void> launchWhatsap() async {
-    final phone = StringConstants.contact_info_phone;
+    const phone = '+905363017892';
     final url = Uri.parse('https://wa.me/$phone');
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
