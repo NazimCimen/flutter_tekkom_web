@@ -2,7 +2,7 @@
 
 ![tekurt Logo](https://github.com/NazimCimen/NazimCimen/blob/main/tekurt_bg.png)
 
-This project was developed to showcase the business activities of **Tekurt Industry And Automotive Ltd.**, a company focused on vehicle repair and maintenance, construction machinery repair, and fuel-saving devices.The website is designed to provide information about the company's vehicle and machinery repair services, fuel saving activities and the company.
+This project was developed to showcase the business activities of **Tekurt Industry And Automotive Ltd.** a company focused on vehicle repair and maintenance, construction machinery repair, and fuel-saving devices.The website is designed to provide information about the company's vehicle and machinery repair services, fuel saving activities and the company.
 
 A special thank you to **Tekurt Industry And Automotive Ltd.** for allowing me to share the source code of this project as open source.
 
