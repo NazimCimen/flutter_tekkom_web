@@ -16,7 +16,6 @@ You can view the official website at [www.tekurt.com.tr](https://www.tekurt.com.
 - **Google Maps Integration**: The company's location is embedded in the website using Google Maps, making it easy to find.
 - **Responsive Design**: The website is designed to be fully responsive, ensuring a seamless user experience across all devices (mobile, tablet, desktop).
 - **SEO Optimization**: The website is optimized for search engines to improve visibility and attract more visitors.
-- **Localization**:
 
 ## Technologies Used
 - **Flutter**: Used for the website's frontend.
