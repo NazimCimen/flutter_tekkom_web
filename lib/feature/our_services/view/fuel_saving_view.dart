@@ -8,6 +8,8 @@ import 'package:tekkom_web/core/utils/image_enum.dart';
 import 'package:tekkom_web/feature/base_ui/base_layout.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
+import 'package:tekkom_web/feature/our_services/widgets/custom_texts_widgets.dart';
+import 'package:tekkom_web/product/constants/app_constants.dart';
 import 'package:tekkom_web/product/widgets/section_background_widget.dart';
 
 class FuelSavingView extends StatefulWidget {
@@ -61,22 +63,10 @@ class _BodyContent extends BaseStateless<void> {
           bgImagePath: ImageEnumsPng.img_services3.toPathPng,
         ),
         const _Body(),
-        Padding(
-          padding: context.pageHorizontolPadding(context),
-          child: _title(context, ''),
+        BrandCarousel(
+          brandPaths: AppConstants.brandLogos,
         ),
-        const BrandCarousel(),
       ],
-    );
-  }
-
-  SelectableText _title(BuildContext context, String text) {
-    return SelectableText(
-      text,
-      style: textTheme(context).headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            height: 2,
-          ),
     );
   }
 }
@@ -92,89 +82,48 @@ class _Body extends BaseStateless<void> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: context.cXLargeValue),
-          _title(
-            context,
-            StringConstants.our_services3,
+          CustomTitle(
+            title: StringConstants.our_services3,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_desc,
+          CustomDescription(
+            desc: StringConstants.our_services3_desc,
           ),
-          _title(
-            context,
-            StringConstants.our_services3_subtitle1,
+          CustomTitle(
+            title: StringConstants.our_services3_subtitle1,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_subtitle2_desc1,
+          CustomDescription(
+            desc: StringConstants.our_services3_subtitle2_desc1,
           ),
-          _title(
-            context,
-            StringConstants.our_services3_subtitle2,
+          CustomTitle(
+            title: StringConstants.our_services3_subtitle2,
           ),
-          _subTitle(
-            context,
-            StringConstants.our_services3_subtitle3,
+          CustomSubtitle(
+            subtitle: StringConstants.our_services3_subtitle3,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_subtitle2_desc3,
+          CustomDescription(
+            desc: StringConstants.our_services3_subtitle2_desc3,
           ),
-          _subTitle(
-            context,
-            StringConstants.our_services3_subtitle4,
+          CustomSubtitle(
+            subtitle: StringConstants.our_services3_subtitle4,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_subtitle2_desc4,
+          CustomDescription(
+            desc: StringConstants.our_services3_subtitle2_desc4,
           ),
-          _subTitle(
-            context,
-            StringConstants.our_services3_subtitle5,
+          CustomSubtitle(
+            subtitle: StringConstants.our_services3_subtitle5,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_subtitle2_desc5,
+          CustomDescription(
+            desc: StringConstants.our_services3_subtitle2_desc5,
           ),
-          _title(
-            context,
-            StringConstants.our_services3_subtitle6,
+          CustomTitle(
+            title: StringConstants.our_services3_subtitle6,
           ),
-          _description(
-            context,
-            StringConstants.our_services3_subtitle2_desc6,
+          CustomDescription(
+            desc: StringConstants.our_services3_subtitle2_desc6,
           ),
           SizedBox(height: context.cMediumValue),
         ],
       ),
-    );
-  }
-
-  SelectableText _subTitle(BuildContext context, String text) {
-    return SelectableText(
-      text,
-      style: textTheme(context).titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            height: 1.5,
-          ),
-    );
-  }
-
-  SelectableText _description(BuildContext context, String text) {
-    return SelectableText(
-      text,
-      style:
-          textTheme(context).bodyLarge?.copyWith(fontStyle: FontStyle.normal),
-    );
-  }
-
-  SelectableText _title(BuildContext context, String text) {
-    return SelectableText(
-      text,
-      style: textTheme(context).headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            height: 2,
-          ),
     );
   }
 }

@@ -16,4 +16,11 @@ final class AppConstants {
     ImageEnumsSvg.car_skoda.toPathSvg,
     ImageEnumsSvg.car_volvo.toPathSvg,
   ];
+  static List<String> machineryBrandLogos = [
+    ImageEnumsSvg.wcar_hidromek.toPathSvg,
+    ImageEnumsSvg.wcar_hitachi.toPathSvg,
+    ImageEnumsSvg.wcar_komatsu.toPathSvg,
+    ImageEnumsSvg.wcar_liebherr.toPathSvg,
+    ImageEnumsSvg.wcar_cat.toPathSvg,
+  ];
 }
