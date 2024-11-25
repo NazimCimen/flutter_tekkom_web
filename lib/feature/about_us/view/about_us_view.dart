@@ -9,6 +9,7 @@ import 'package:tekkom_web/core/size/padding_extension.dart';
 import 'package:tekkom_web/feature/header/header_desktop.dart';
 import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
 import 'package:tekkom_web/feature/our_services/widgets/our_services_widget.dart';
+import 'package:tekkom_web/product/constants/app_constants.dart';
 import 'package:tekkom_web/product/widgets/section_background_widget.dart';
 
 class AboutUsView extends StatefulWidget {
@@ -76,7 +77,9 @@ class _BodyContent extends BaseStateless<void> {
           scrollController: scrollController,
         ),
         SizedBox(height: context.cLargeValue),
-        const BrandCarousel(),
+        BrandCarousel(
+          brandPaths: AppConstants.machineryBrandLogos,
+        ),
         SizedBox(height: context.cXLargeValue),
       ],
     );

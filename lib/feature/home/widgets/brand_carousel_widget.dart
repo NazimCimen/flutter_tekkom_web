@@ -5,12 +5,15 @@ import 'package:tekkom_web/config/localization/string_constants.dart';
 import 'package:tekkom_web/core/size/app_border_radius_extensions.dart';
 import 'package:tekkom_web/core/size/constant_size.dart';
 import 'package:tekkom_web/core/size/padding_extension.dart';
-import 'package:tekkom_web/product/constants/app_constants.dart';
 import 'package:tekkom_web/product/widgets/section_title_text_widget.dart';
 import 'package:tekkom_web/responsive/responsive.dart';
 
 class BrandCarousel extends StatelessWidget {
-  const BrandCarousel({super.key});
+  final List<String> brandPaths;
+  const BrandCarousel({
+    required this.brandPaths,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,21 +53,25 @@ class BrandCarousel extends StatelessWidget {
               enlargeCenterPage: true,
               viewportFraction: 0.3,
             ),
-            items: AppConstants.brandLogos.map((logoPath) {
+            items: brandPaths.map((logoPath) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: context.cBorderRadiusAllLow,
-                    ),
-                    child: Padding(
-                      padding: context.cPaddingMedium,
-                      child: SvgPicture.asset(
-                        logoPath,
-                        height: Responsive.isMobile(context)
-                            ? context.cLargeValue * 3
-                            : context.cXxLargeValue,
+                  return SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: context.cBorderRadiusAllLow,
+                      ),
+                      child: Padding(
+                        padding: context.cPaddingMedium,
+                        child: SvgPicture.asset(
+                          logoPath,
+                          height: Responsive.isMobile(context)
+                              ? context.cLargeValue * 3
+                              : context.cXxLargeValue,
+                        ),
                       ),
                     ),
                   );

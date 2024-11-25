@@ -6,6 +6,7 @@ import 'package:tekkom_web/feature/home/widgets/brand_carousel_widget.dart';
 import 'package:tekkom_web/feature/home/widgets/description_with_image_widget.dart';
 import 'package:tekkom_web/feature/home/widgets/main_page.dart';
 import 'package:tekkom_web/feature/our_services/widgets/our_services_widget.dart';
+import 'package:tekkom_web/product/constants/app_constants.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -55,7 +56,9 @@ class _BodyContent extends StatelessWidget {
           scrollController: scrollController,
         ),
         const DescriptionWithImageWidget(),
-        const BrandCarousel(),
+        BrandCarousel(
+          brandPaths: AppConstants.brandLogos,
+        ),
       ],
     );
   }

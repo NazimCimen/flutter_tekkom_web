@@ -31,6 +31,11 @@ enum ImageEnumsSvg {
   car_seat,
   car_skoda,
   car_volvo,
+  wcar_liebherr,
+  wcar_komatsu,
+  wcar_hitachi,
+  wcar_hidromek,
+  wcar_cat
 }
 
 extension SvgExtension on ImageEnumsSvg {
